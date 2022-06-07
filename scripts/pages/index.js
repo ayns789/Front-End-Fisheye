@@ -13,7 +13,7 @@ let photographers = [];
             console.log(e);
         }
 
-        console.log(photographers);
+        console.log(photographers.photographers[0]);
 
         return photographers;
     }
@@ -25,6 +25,7 @@ let photographers = [];
             const photographerModel = photographerFactory(photographer);
             const userCardDOM = photographerModel.getUserCardDOM();
             photographersSection.appendChild(userCardDOM);
+
         });
     };
 

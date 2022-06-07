@@ -41,10 +41,39 @@ h1 {
 
 .photographer_section article h2 {
     color: #D3573C;
-    font-size: 36px;
+    font-size: 2.2em;
+    margin-bottom: 0em;
+    font-weight: 100;
+}
+.photographer_section article h3 {
+    color: #901C1C;
+    font-size: 0.8em;
+    margin: 0 0 -0.5em 0;
+    font-weight: 400;
 }
 
 .photographer_section article img {
-    height: 200px;
-    width: 200px;
+    object-fit: cover;
+    width: 12.5em;
+    height: 12.5em;
+    border-radius: 50%;
 }
+
+.photographer_section article p { 
+    justify-self: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-size: 0.6em;
+}
+.photographer_section article p:nth-child(2n+1) { 
+    color: #757575;
+    margin-top: -0.5em;
+}
+
+@media screen and (max-width: 1145px){
+    .photographer_section article h2 {
+        font-size: 1.8em;
+    }
+  }
