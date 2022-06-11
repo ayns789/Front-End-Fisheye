@@ -2,6 +2,8 @@ function photographerFactory(data) {
     const { name, portrait, city, country, tagline, price, id } = data;
 
     const picture = `assets/photographers/${portrait}`;
+
+
     
     function getUserCardDOM() {
         
@@ -41,9 +43,9 @@ function photographerFactory(data) {
         // add elements to article
         setAttributes(a, {
             "href": "photographer.html",
-            "id": id,
-            "onClick": "saveId(this.id);"
+            "aria-label": "au click cela redirige vers la page de ce photographe"
         });
+        a.addEventListener('click', ()=> savePhotographer(data));
 
         // a.setAttribute(id);
         article.appendChild(img);

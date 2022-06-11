@@ -39,8 +39,8 @@ let photographers = [];
     
     init();
 
-    function saveId(id){ 
+    function savePhotographer(data){ 
         localStorage.clear();
-        localStorage.setItem('idPhotograph', JSON.stringify(id));
+        localStorage.setItem('photographerInfo', JSON.stringify(data));
     }
     
