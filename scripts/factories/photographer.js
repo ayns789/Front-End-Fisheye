@@ -18,19 +18,16 @@ function photographerFactory(data) {
          
 
         // add attributes and values to the elements html :
-
         // function to add multiples attributes to an element html
-        function setAttributes(el, attrs) {
-            for(let key in attrs) {
-              el.setAttribute(key, attrs[key]);
-            }
-          }
+ function setAttributes(el, attrs) {
+    for(let key in attrs) {
+      el.setAttribute(key, attrs[key]);
+    }
+  }
           setAttributes(img, {
               "src": picture, 
               "aria-label": "une photo de profil du photographe"
             });
-        // img.setAttribute("src", picture);
-        // img.setAttribute("aria-label", "une photo de profil du photographe");
         h2.textContent = name;
         h2.setAttribute("aria-label", "le nom du photographe est " + name);
         h3.textContent = city + ", " + country;
@@ -45,7 +42,6 @@ function photographerFactory(data) {
             "href": "photographer.html",
             "aria-label": "au click cela redirige vers la page de ce photographe"
         });
-        a.addEventListener('click', ()=> savePhotographer(data));
 
         // a.setAttribute(id);
         article.appendChild(img);
@@ -55,8 +51,11 @@ function photographerFactory(data) {
         article.appendChild(p2);
         a.appendChild(article);
 
+        // save in localstorage the data who clicked
+        a.addEventListener('click', ()=> savePhotographer(data));
+
         return (a);
     }
     
-    return { name, picture, getUserCardDOM }
+    return {  getUserCardDOM }
 }
