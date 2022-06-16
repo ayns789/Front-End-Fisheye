@@ -1,6 +1,4 @@
 //Mettre le code JavaScript lié à la page photographer.html
-import PhotographerModel from '../classes/PhotographerModel.js';
-import PhotographerWork from '../classes/PhotographerWork.js';
 import {photographerPageFactory1} from "../factories/photographerPageFactory1.js";
 import {photographerPageFactory2} from "../factories/photographerPageFactory2.js";
 
@@ -41,7 +39,9 @@ async function displayData( selectedWorksPhotograph ) {
 
     const photographerModel = photographerPageFactory1();
     const userCardDOM1 = photographerModel.getUserCardDOM1();
+    const userCardDOM2 = photographerModel.getUserCardDOM2();
     photographersHeader.appendChild(userCardDOM1);
+    photographersHeader.appendChild(userCardDOM2);
 
     selectedWorksPhotograph.forEach((photographie) => {
         // console.log(photographie);

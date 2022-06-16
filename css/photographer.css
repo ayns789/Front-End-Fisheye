@@ -13,18 +13,15 @@
     margin: 0 100px;
 }
 .photograph-header .right-block {
-    /* display: flex;
-    justify-content: center;
-    align-items: right; */
-    /* flex-direction: column; */
-    position :absolute;
-    margin-right: 2em;
-}
-.photograph-header .right-block img {
     display: flex;
     justify-content: center;
     align-items: right;
-    flex-direction: column;
+    padding-right: 2.5em;
+    /* flex-direction: row; */
+    /* position :absolute;
+    margin-right: 2em; */
+}
+.photograph-header .right-block img {
     object-fit: cover;
     width: 12.5em;
     height: 12.5em;
@@ -39,28 +36,54 @@ order : 3;
 .photograph-header .left-block:nth-child(2) {
 order : 1;
 }
-
-.photograph-header article p { 
-    /* justify-self: center; */
+.photograph-header .left-block {
+    padding-left: 2.5em;
+    padding-top:0;
     display: flex;
-    justify-content: left;
+    justify-content: center;
     align-items: left;
-    /* flex-direction: column; */
-    font-size: 0.6em;
+    flex-direction: column;
+}
+.photograph-header .left-block p { 
+    
+    font-size: 1.1em;
 }
 
-.photograph-header article h2 {
+.photograph-header .left-block h2 {
     color: #D3573C;
-    font-size: 2.2em;
-    margin-bottom: 0em;
+    font-size: 4em;
+    margin: 0em;
     font-weight: 100;
 }
 
-.photograph-header article h3 {
+.photograph-header .left-block h3 {
     color: #901C1C;
-    font-size: 0.8em;
+    font-size: 1.5em;
     margin: 0 0 -0.5em 0;
     font-weight: 400;
+}
+/* ////////////////////////////////////////////////////////////// */
+.photographies-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 70px;
+    margin-top: 100px;
+}
+.photographies-section article {
+    justify-self: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.photographies-section article img {
+    object-fit: cover;
+    width: 18.8em;
+    height: 21.8em;
+}
+.photographies-section article h2 {
+    font-size: 1.5em;
 }
 /* ////////////////////////////////////////////////////////////// */
 .contact_button {

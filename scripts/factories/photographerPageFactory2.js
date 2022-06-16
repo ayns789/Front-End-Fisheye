@@ -1,22 +1,27 @@
+// import PhotographerWork from '../classes/PhotographerWork.js';
+
 export function photographerPageFactory2( photographie ) {
     let dataPhotographer = JSON.parse(localStorage.getItem("photographerInfo"));
     let objPhotographie = {
         idPhotographie : photographie.id,
-        idPhotographer : dataPhotographer.id,
+        idPhotographer : photographie.idPhotographer,
         title : photographie.title,
         image : photographie.image, 
         likes : photographie.likes,
         date : photographie.date,
         pricePhotographie : photographie.price
     }
+
     
-    const pictures = `assets/photographies/${dataPhotographer.image}`;
+    const picture = `assets/photographies/${objPhotographie.image}`;
 
     function getUserCardDOM2() {
         
         // create elements html :
         const article = document.createElement( 'article' );
         const img = document.createElement( 'img' );
+        const video = document.createElement( 'video' );
+        const source = document.createElement( 'source' );
         const h2 = document.createElement( 'h2' );
         // const h3 = document.createElement( 'h3' );
         // const p1 = document.createElement( 'p' );
@@ -31,35 +36,54 @@ export function photographerPageFactory2( photographie ) {
       el.setAttribute(key, attrs[key]);
     }
   }
-          setAttributes(img, {
-              "src": pictures, 
-              "aria-label": "le nom de la photo est " + objPhotographie.title
-            });
+
+  // function argumentsContientMp4(){
+  //   return [].includes.call(arguments, 'mp4');
+  // }
+  // let videoDetect = "mp4";
+  // let matches = picture.matchAll(videoDetect);
+
+  // if(matches){
+  // if(videoDetect.match(picture)){
+  // if(!videoDetect.test(picture)){
+  if(picture.includes("mp4")){
+  // if(argumentsContientMp4(picture)){
+    // alert('Word Match');
+    setAttributes(source, {
+      "src": picture, 
+      "type": "video/mp4",
+      "aria-label": "le nom de la video est " + picture
+    });
+    video.appendChild(source);
+    article.appendChild(video);
+
+    // setAttributes(img, {
+    //   "src": picture, 
+    //   "aria-label": "le nom de la photo est " + objPhotographie.title
+    // });
+    // article.appendChild(img);
+
+  } else {
+    // alert('Word not Match');
+    // setAttributes(source, {
+    //   "src": picture, 
+    //   "type": "video/mp4",
+    //   "aria-label": "le nom de la video est " + objPhotographie.title
+    // });
+    // video.appendChild(source);
+    // article.appendChild(video);
+
+    setAttributes(img, {
+      "src": picture, 
+      "aria-label": "le nom de la photo est " + picture
+    });
+    article.appendChild(img);
+  }
+          
         h2.textContent = objPhotographie.title;
         h2.setAttribute("aria-label", "le titre de la photo est " + objPhotographie.title);
-        // h3.textContent = city + ", " + country;
-        // h3.setAttribute("aria-label", "la ville du photographe est " + city + ", " + country);
-        // p1.textContent = tagline;
-        // p1.setAttribute("aria-label", "le slogan du photographe est " + tagline);
-        // p2.textContent =  price + "€/heure";
-        // p2.setAttribute("aria-label", "le prix du photographe est " + price + " euros de l'heure");
         
-        // add elements to article
-        // setAttributes(a, {
-        //     "href": "photographer.html",
-        //     "aria-label": "au click cela redirige vers la page de ce photographe"
-        // });
-
-        // a.setAttribute(id);
-        article.appendChild(img);
         article.appendChild(h2);
-        // article.appendChild(h3);
-        // article.appendChild(p1);
-        // article.appendChild(p2);
-        // a.appendChild(article);
-
-        // save in localstorage the data who clicked
-        // a.addEventListener('click', ()=> savePhotographer(data));
 
         return (article);
     }
