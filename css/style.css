@@ -74,6 +74,10 @@ h1 {
     margin-top: -0.5em;
 }
 
+footer {
+    margin-top: 8em;
+}
+
 @media screen and (max-width: 1145px){
     .photographer_section article h2 {
         font-size: 1.8em;
