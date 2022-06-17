@@ -53,6 +53,29 @@ export function photographerPageFactory1( ) {
 
         return (div2);
     }
+
+
+    function getUserCardDOM3() {
+        
+        const div3 = document.createElement("div");
+        div3.className = "price-fixed";
+        const p3 = document.createElement("p");
+        p3.textContent = objPhotographer._price + "€ / jour";
+
+        // function setAttributes(el, attrs) {
+        //     for(let key in attrs) {
+        //     el.setAttribute(key, attrs[key]);
+        //     }
+        // }
+        //   setAttributes(img, {
+        //       "src": picture, 
+        //       "aria-label": "une photo de profil du photographe"
+        //     });
+
+        div3.appendChild(p3);
+
+        return (div3);
+    }
     
-    return { getUserCardDOM1, getUserCardDOM2};
+    return { getUserCardDOM1, getUserCardDOM2, getUserCardDOM3};
 }

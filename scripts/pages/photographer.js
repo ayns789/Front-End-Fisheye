@@ -40,8 +40,10 @@ async function displayData( selectedWorksPhotograph ) {
     const photographerModel = photographerPageFactory1();
     const userCardDOM1 = photographerModel.getUserCardDOM1();
     const userCardDOM2 = photographerModel.getUserCardDOM2();
+    const userCardDOM3 = photographerModel.getUserCardDOM3();
     photographersHeader.appendChild(userCardDOM1);
     photographersHeader.appendChild(userCardDOM2);
+    photographersHeader.appendChild(userCardDOM3);
 
     selectedWorksPhotograph.forEach((photographie) => {
         // console.log(photographie);

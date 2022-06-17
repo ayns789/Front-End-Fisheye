@@ -3,6 +3,7 @@
 body {
     font-family: "DM Sans", sans-serif;
     margin: 0;
+    /* min-width: 1140px; */
 }
 a {
     text-decoration: none;

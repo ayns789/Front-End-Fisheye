@@ -38,14 +38,23 @@ order : 1;
 }
 .photograph-header .left-block {
     padding-left: 2.5em;
+    padding-right: 1.5em;
+    /* max-width: 25em; */
     padding-top:0;
-    display: flex;
-    justify-content: center;
-    align-items: left;
     flex-direction: column;
 }
+.photograph-header .center-block {
+    padding-right: 2em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* overflow: hidden; */
+    position: absolute;
+    right: 43%; 
+    /* left: 45%;  */
+    /* min-left: 35em; */
+}
 .photograph-header .left-block p { 
-    
     font-size: 1.1em;
 }
 
@@ -53,7 +62,9 @@ order : 1;
     color: #D3573C;
     font-size: 4em;
     margin: 0em;
+    padding: 0em;
     font-weight: 100;
+    /* word-wrap: break-word; */
 }
 
 .photograph-header .left-block h3 {
@@ -66,7 +77,7 @@ order : 1;
 .photographies-section {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    gap: 70px;
+    gap: 20px;
     margin-top: 100px;
 }
 .photographies-section article {
@@ -76,14 +87,48 @@ order : 1;
     align-items: center;
     flex-direction: column;
 }
+.price-fixed {
+position: fixed;
+font-size: 1.5em;
+font-weight: bold;
+color: black;
+padding: 0 0.5em 0 0.5em ;
+background-color: #DB8876;
+bottom: 0em;
+right: 2em;
+}
 
 .photographies-section article img {
     object-fit: cover;
     width: 18.8em;
     height: 21.8em;
 }
+.block-photographies {
+    display: flex;
+    flex-direction: row;
+    /* justify-content: center; */
+    align-items: center;
+    width: 100%
+}
+.block-photographies i {
+    color: #901C1C;
+    right: -0.5em;
+}
+.block-photographies p {
+    right: 0.5em;
+    padding-right: 0.5em;
+}
 .photographies-section article h2 {
-    size: 1.5em;
+    color: #901C1C;
+    font-size: 1.5em;
+    width: 80%;
+    left: 0em;
+    padding-right: 1em;
+    /* display: flex;
+    justify-content: left; */
+    overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 /* ////////////////////////////////////////////////////////////// */
 .contact_button {
@@ -151,4 +196,20 @@ form input {
     height: 68px;
     border: none;
     border-radius: 5px;
+}
+
+@media screen and (max-width: 1500px){
+    .photograph-header .left-block {
+        max-width: 25em;
+    }
+  }
+  @media screen and (max-width: 1080px){
+  .photograph-header .center-block {
+    right: 35%;
+  }
+}
+  @media screen and (max-width: 1030px){
+  .photograph-header .center-block {
+    right: 30%;
+  }
 }
