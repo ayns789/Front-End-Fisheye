@@ -1,8 +1,8 @@
 //Mettre le code JavaScript lié à la page photographer.html
-import {photographerPageFactory1} from "../factories/photographerPageFactory1.js";
-import {photographerPageFactory2} from "../factories/photographerPageFactory2.js";
+import {photographerPageFactory} from "../factories/photographerPageFactory.js";
 
-
+// Récupère les datas du photographe enregistré dans le localStorage
+let dataPhotographer = JSON.parse(localStorage.getItem("photographerInfo"));
 let photographers = [];
 
 async function getPhotographerWorks(dataPhotographer) {
@@ -17,7 +17,7 @@ async function getPhotographerWorks(dataPhotographer) {
                 console.error('retour du serveur : ', response.statut);
             } 
     } catch(e){
-        console.log(e);
+        console.error(e);
     }
     media = photographers.media;
 
@@ -37,23 +37,22 @@ async function displayData( selectedWorksPhotograph ) {
     // console.log(photographie);
     // console.log(selectedWorksPhotograph);
 
-    const photographerModel = photographerPageFactory1();
-    const userCardDOM1 = photographerModel.getUserCardDOM1();
-    const userCardDOM2 = photographerModel.getUserCardDOM2();
-    const userCardDOM3 = photographerModel.getUserCardDOM3();
-    photographersHeader.appendChild(userCardDOM1);
-    photographersHeader.appendChild(userCardDOM2);
-    photographersHeader.appendChild(userCardDOM3);
+    const photographerModel = photographerPageFactory();
+    const userHeader = photographerModel.getUserHeader();
+    const userPhotoHeader = photographerModel.getUserPhotoHeader();
+    const userPrice = photographerModel.getUserPrice();
+    photographersHeader.appendChild(userHeader);
+    photographersHeader.appendChild(userPhotoHeader);
+    photographersHeader.appendChild(userPrice);
 
     selectedWorksPhotograph.forEach((photographie) => {
         // console.log(photographie);
-        const photographieModel = photographerPageFactory2( photographie);
-        const userCardDOM2 = photographieModel.getUserCardDOM2();
-        photographiesSection.appendChild(userCardDOM2);
+        const photographieModel = photographerPageFactory();
+        const userPhotoBody = photographieModel.getUserPhotoBody(photographie);
+        photographiesSection.appendChild(userPhotoBody);
     });
 };
-// Récupère les datas du photographe enregistré dans le localStorage
-let dataPhotographer = JSON.parse(localStorage.getItem("photographerInfo"));
+
 
 // faire une class avec les datas du photographe
 // let SelectedPhotographer = new PhotographerModel(dataPhotographer);

@@ -88,14 +88,14 @@ order : 1;
     flex-direction: column;
 }
 .price-fixed {
-position: fixed;
-font-size: 1.5em;
-font-weight: bold;
-color: black;
-padding: 0 0.5em 0 0.5em ;
-background-color: #DB8876;
-bottom: 0em;
-right: 2em;
+    position: fixed;
+    font-size: 1.5em;
+    font-weight: bold;
+    color: black;
+    padding: 0 0.5em 0 0.5em ;
+    background-color: #DB8876;
+    bottom: 0em;
+    right: 2em;
 }
 
 .photographies-section article img {
@@ -127,8 +127,8 @@ right: 2em;
     /* display: flex;
     justify-content: left; */
     overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 /* ////////////////////////////////////////////////////////////// */
 .contact_button {
