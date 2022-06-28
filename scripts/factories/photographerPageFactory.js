@@ -1,9 +1,14 @@
 import PhotographerModel from '../classes/PhotographerModel.js';
+// import { createRequire } from "browserify-fs";
+// import fs from 'node:fs/promises';
+// const buffer = readFileSync(new URL('./data.proto', import.meta.url));
+// const { createRequire } = require('module');
+// const require = createRequire(import.meta.url);
+// const yourData = require("../../data/photographers.json");
 
 export function photographerPageFactory( ) {
     let dataPhotographer = JSON.parse(localStorage.getItem("photographerInfo"));
-    console.log(dataPhotographer.id);
-
+    // console.log(dataPhotographer.id);
     let objPhotographer = new PhotographerModel(dataPhotographer);
     
     const picture = `assets/photographers/${objPhotographer.portrait}`;
@@ -56,22 +61,30 @@ export function photographerPageFactory( ) {
 
 
     function getUserPrice() {
+
+        let selectedPhotographies = JSON.parse(localStorage.getItem("selectedWorksPhotograph"));
+        // alert(selectedPhotographies);
         
+        let sumLikes = selectedPhotographies.map(i=>i.likes).reduce((a,b)=>a+b);
+
         const div3 = document.createElement("div");
         div3.className = "price-fixed";
+        const sumL = document.createElement("p");
+        sumL.className = "totaLike";
         const p3 = document.createElement("p");
+        sumL.textContent = sumLikes + " ";
         p3.textContent = objPhotographer._price + "€ / jour";
+        const heart = document.createElement( 'i' );
+          heart.className = "fa-solid fa-heart";
 
         // function setAttributes(el, attrs) {
         //     for(let key in attrs) {
         //     el.setAttribute(key, attrs[key]);
         //     }
         // }
-        //   setAttributes(img, {
-        //       "src": picture, 
-        //       "aria-label": "une photo de profil du photographe"
-        //     });
 
+        div3.appendChild(sumL);
+        div3.appendChild(heart);
         div3.appendChild(p3);
 
         return (div3);
@@ -112,10 +125,30 @@ export function photographerPageFactory( ) {
           const heart = document.createElement( 'i' );
           h2likes.className = "block-photographies";
           heart.className = "fa-solid fa-heart";
-          // const h3 = document.createElement( 'h3' );
-          // const p1 = document.createElement( 'p' );
-          // const p2 = document.createElement( 'p' );
-          // const a = document.createElement( 'a' );
+
+          
+//           const heartClick = document.querySelector(".fa-heart");
+//           heartClick.addEventListener('click', () => {
+//             if(objPhotographieVideo.video){
+//                 objPhotographieVideo.likes++;
+//             } else {
+//                 objPhotographie.likes++;
+//             }
+            
+//   })
+// const heartClick = document.querySelector(".fa-heart");
+// const likesClicked = document.querySelector('.counter');
+
+// $button.addEventListener('click', function(){
+//   $counter.value = parseInt($counter.value) + 1; // `parseInt` converts the `value` from a string to a number
+// }, false);
+// function incrementValue()
+// {
+//     var value = parseInt(document.getElementById('number').value, 10);
+//     value = isNaN(value) ? 0 : value;
+//     value++;
+//     document.getElementById('number').value = value;
+// }
           
           // function to add multiples attributes to an element html
           function setAttributes(el, attrs) {
@@ -123,6 +156,7 @@ export function photographerPageFactory( ) {
               el.setAttribute(key, attrs[key]);
             }
           }
+
           // add attributes and values to the elements html :
           if(objPhotographieVideo.video){
             setAttributes(source, {
@@ -131,11 +165,10 @@ export function photographerPageFactory( ) {
               "aria-label": "le nom de la video est " + movie
             });
             setAttributes(video, {
-              "width": "300", 
-              "height": "340",
-              "object-fit": "cover",
-              "controls": "controls"
+              "controls": "controls",
+              "loop": "true"
             });
+            // video.setAttribute("controls", "controls")
   
             h2.textContent = objPhotographieVideo.title;
             h2.setAttribute("aria-label", "le titre de la video est " + objPhotographieVideo.title);
@@ -143,7 +176,6 @@ export function photographerPageFactory( ) {
             likes.setAttribute("aria-label", "le nombre de 'likes' est " + objPhotographieVideo.likes);
             video.appendChild(source);
             article.appendChild(video);
-  
           } else  {
             setAttributes(img, {
               "src": picture, 
@@ -156,14 +188,28 @@ export function photographerPageFactory( ) {
             likes.setAttribute("aria-label", "le nombre de 'likes' est " + objPhotographie.likes);
             article.appendChild(img);
           }
-  
+        
           h2likes.appendChild(h2);
           h2likes.appendChild(likes);
           h2likes.appendChild(heart);
           article.appendChild(h2likes);
-  
+
+          heart.onclick = function() {
+            // document.getElementsByClassName(".totaLike").value = +1;
+            heart.classList.toggle("active");
+
+            if(heart.classList.contains("active")) {
+              likes.textContent = photographie.likes += 1;
+              document.getElementsByClassName(".totaLike").value = sumLikes +1;
+            } else {
+              likes.textContent = photographie.likes -= 1;
+            }
+
+          }
+          
           return (article);
       }
+      
     
     return { getUserHeader, getUserPhotoHeader, getUserPrice, getUserPhotoBody};
 }

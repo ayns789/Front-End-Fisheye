@@ -19,12 +19,20 @@
           <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
         </div>
       </div>
+      <section class="filterBy">
+        <label class="filterBy_label" for="filter" aria-label="Trier par">Trier par</label>
+        <select class="dropdown" name="trigger" id="filter">
+          <option class="dropdown_list" value="popularity">Popularité</option>
+          <option class="dropdown_list" value="date">Date</option>
+          <option class="dropdown_list" value="title">Titre</option>
+        </select>
+      </section>
       <div class="photographies-section"></div>
     </main>
     <div id="contact_modal">
       <div class="modal">
-        <header>
-          <h2>Contactez-moi</h2>
+        <header class="modalH">
+          <h2 class="titleH">Contactez moi</h2>
           <img src="assets/icons/close.svg" onclick="closeModal()" />
         </header>
         <form>
@@ -32,11 +40,24 @@
             <label>Prénom</label>
             <input />
           </div>
+          <div>
+            <label>Nom</label>
+            <input />
+          </div>
+          <div>
+            <label>Email</label>
+            <input />
+          </div>
+          <div>
+            <label>Votre message</label>
+            <input />
+          </div>
           <button class="contact_button">Envoyer</button>
         </form>
       </div>
     </div>
     <script src="/scripts/utils/contactForm.js"></script>
+    <script src="scripts/factories/Photographer.js"></script>
     <script type="module" src="scripts/pages/photographer.js"></script>
     <footer></footer>
   </body>

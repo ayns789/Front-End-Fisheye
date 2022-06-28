@@ -1,0 +1,30 @@
+{
+  "dependencies": {
+    "browserify-fs": "^1.0.0",
+    "module": "^1.2.5"
+  },
+  "name": "front_end_fisheye",
+  "description": "Rien à installer ici, il suffit d'ouvrir le fichier `index.html`.",
+  "version": "1.0.0",
+  "main": "index.js",
+  "devDependencies": {
+    "eslint": "^8.18.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "prettier": "2.7.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ayns789/Front-End-Fisheye.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ayns789/Front-End-Fisheye/issues"
+  },
+  "homepage": "https://github.com/ayns789/Front-End-Fisheye#readme"
+}
