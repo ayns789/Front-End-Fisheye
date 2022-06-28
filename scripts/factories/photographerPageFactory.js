@@ -1,27 +1,25 @@
 import PhotographerModel from '../classes/PhotographerModel.js';
-// import { createRequire } from "browserify-fs";
-// import fs from 'node:fs/promises';
-// const buffer = readFileSync(new URL('./data.proto', import.meta.url));
-// const { createRequire } = require('module');
-// const require = createRequire(import.meta.url);
-// const yourData = require("../../data/photographers.json");
 
 export function photographerPageFactory( ) {
+
+  // récupération des données du photographe dans le local storage
     let dataPhotographer = JSON.parse(localStorage.getItem("photographerInfo"));
-    // console.log(dataPhotographer.id);
+    // instanciation du design pattern constructor pour créer un objet représentant le photographe
     let objPhotographer = new PhotographerModel(dataPhotographer);
-    
+    // récupération du chemin de la photo de profil du photographe
     const picture = `assets/photographers/${objPhotographer.portrait}`;
 
+    // fonction pour créer la partie du header qui contient le nom, la localisation et le slogan du photographe
     function getUserHeader() {
         
+        //création d'éléments html
         const div1 = document.createElement("div");
-        div1.className = "left-block";
-
         const h2 = document.createElement( 'h2' );
         const h3 = document.createElement( 'h3' );
         const p1 = document.createElement( 'p' );
-        
+
+        // affectation de classes et de valeurs aux éléments
+        div1.className = "left-block";
         h2.textContent = objPhotographer.name;
         h2.setAttribute("aria-label", "le nom du photographe est " + objPhotographer.name);
         h3.textContent = objPhotographer.city + ", " + objPhotographer.country;
@@ -29,6 +27,7 @@ export function photographerPageFactory( ) {
         p1.textContent = objPhotographer.tagline;
         p1.setAttribute("aria-label", "le slogan du photographe est " + objPhotographer.tagline);
         
+        // affectation des éléments dans l'élément html div créée
         div1.appendChild(h2);
         div1.appendChild(h3);
         div1.appendChild(p1);
@@ -37,23 +36,29 @@ export function photographerPageFactory( ) {
     }
 
 
+    // fonction pour créer la partie du header qui contient la photo du photographe
     function getUserPhotoHeader() {
         
+      //création d'éléments html
         const div2 = document.createElement("div");
-        div2.className = "right-block";
-
         const img = document.createElement( 'img' );
 
+        // fonction pour fournir plusieurs attributs à un élément
         function setAttributes(el, attrs) {
-            for(let key in attrs) {
-            el.setAttribute(key, attrs[key]);
-            }
-        }
+          for(let key in attrs) {
+          el.setAttribute(key, attrs[key]);
+          }
+      }
+        
+        // affectation de classes et de valeurs aux éléments
+        div2.className = "right-block";
+
           setAttributes(img, {
               "src": picture, 
               "aria-label": "une photo de profil du photographe"
             });
 
+        // affectation des éléments dans l'élément html img créée
         div2.appendChild(img);
 
         return (div2);
@@ -62,27 +67,31 @@ export function photographerPageFactory( ) {
 
     function getUserPrice() {
 
-        let selectedPhotographies = JSON.parse(localStorage.getItem("selectedWorksPhotograph"));
-        // alert(selectedPhotographies);
-        
-        let sumLikes = selectedPhotographies.map(i=>i.likes).reduce((a,b)=>a+b);
+      // récupération des données du photographe dans le local storage 
+      let selectedPhotographies = JSON.parse(localStorage.getItem("selectedWorksPhotograph"));
 
+      // fonctionnalité de calcul de la somme totale des likes des médias du photographe
+        let sumLikes;
+        function calculateSumLikes(){
+           sumLikes = selectedPhotographies.map(i=>i.likes).reduce((a,b)=>a+b);
+        }
+
+        calculateSumLikes();
+
+        //création d'éléments html
         const div3 = document.createElement("div");
-        div3.className = "price-fixed";
         const sumL = document.createElement("p");
-        sumL.className = "totaLike";
         const p3 = document.createElement("p");
+        const heart = document.createElement( 'i' );
+
+        // affectation de classes et de valeurs aux éléments
+        div3.className = "price-fixed";
+        sumL.className = "totaLike";
         sumL.textContent = sumLikes + " ";
         p3.textContent = objPhotographer._price + "€ / jour";
-        const heart = document.createElement( 'i' );
-          heart.className = "fa-solid fa-heart";
+        heart.className = "fa-solid fa-heart";
 
-        // function setAttributes(el, attrs) {
-        //     for(let key in attrs) {
-        //     el.setAttribute(key, attrs[key]);
-        //     }
-        // }
-
+        // affectation des éléments dans l'élément html div créée
         div3.appendChild(sumL);
         div3.appendChild(heart);
         div3.appendChild(p3);
@@ -92,6 +101,7 @@ export function photographerPageFactory( ) {
 
     function getUserPhotoBody(photographie) {
 
+      // création d'objets pour représenter les articles indépendament
         let objPhotographie = {
           idPhotographie : photographie.id,
           idPhotographer : photographie.idPhotographer,
@@ -111,10 +121,11 @@ export function photographerPageFactory( ) {
           pricePhotographie : photographie.price
       }
       
+      // récupération des chemins des médias
       const picture = `assets/photographies/${objPhotographie.image}`;
       const movie = `assets/photographies/${objPhotographieVideo.video}`;
           
-          // create elements html :
+          //création d'éléments html
           const article = document.createElement( 'article' );
           const video = document.createElement( 'video' );
           const source = document.createElement( 'source' );
@@ -123,41 +134,20 @@ export function photographerPageFactory( ) {
           const h2 = document.createElement( 'h2' );
           const likes = document.createElement( 'p' );
           const heart = document.createElement( 'i' );
-          h2likes.className = "block-photographies";
-          heart.className = "fa-solid fa-heart";
 
-          
-//           const heartClick = document.querySelector(".fa-heart");
-//           heartClick.addEventListener('click', () => {
-//             if(objPhotographieVideo.video){
-//                 objPhotographieVideo.likes++;
-//             } else {
-//                 objPhotographie.likes++;
-//             }
-            
-//   })
-// const heartClick = document.querySelector(".fa-heart");
-// const likesClicked = document.querySelector('.counter');
-
-// $button.addEventListener('click', function(){
-//   $counter.value = parseInt($counter.value) + 1; // `parseInt` converts the `value` from a string to a number
-// }, false);
-// function incrementValue()
-// {
-//     var value = parseInt(document.getElementById('number').value, 10);
-//     value = isNaN(value) ? 0 : value;
-//     value++;
-//     document.getElementById('number').value = value;
-// }
-          
-          // function to add multiples attributes to an element html
+          // fonction pour fournir plusieurs attributs à un élément
           function setAttributes(el, attrs) {
             for(let key in attrs) {
               el.setAttribute(key, attrs[key]);
             }
           }
 
-          // add attributes and values to the elements html :
+          // affectation de classes et de valeurs aux éléments
+          h2likes.className = "block-photographies";
+          heart.className = "fa-solid fa-heart";
+          
+
+          // dissocier les photos et vidéos pour certaines affectations 
           if(objPhotographieVideo.video){
             setAttributes(source, {
               "src": movie, 
@@ -168,7 +158,6 @@ export function photographerPageFactory( ) {
               "controls": "controls",
               "loop": "true"
             });
-            // video.setAttribute("controls", "controls")
   
             h2.textContent = objPhotographieVideo.title;
             h2.setAttribute("aria-label", "le titre de la video est " + objPhotographieVideo.title);
@@ -189,21 +178,39 @@ export function photographerPageFactory( ) {
             article.appendChild(img);
           }
         
+          // affectation des éléments dans l'élément html article créé
           h2likes.appendChild(h2);
           h2likes.appendChild(likes);
           h2likes.appendChild(heart);
           article.appendChild(h2likes);
 
+          // fonction pour incrémenter / décrémenter des likes aux médias, et mettre à jour le local storage
           heart.onclick = function() {
-            // document.getElementsByClassName(".totaLike").value = +1;
+            // je récupère la liste des photographies concernée
+            let selectedPhotographies = JSON.parse(localStorage.getItem("selectedWorksPhotograph"));
+            // je récupère l'objet concerné, par son id
+            let objIndex = selectedPhotographies.findIndex((obj => obj.id == photographie.id));
+            // je rajoute une classe avec un toggle, pour détecter si l'élément possède cette classe
             heart.classList.toggle("active");
 
-            if(heart.classList.contains("active")) {
-              likes.textContent = photographie.likes += 1;
-              document.getElementsByClassName(".totaLike").value = sumLikes +1;
-            } else {
-              likes.textContent = photographie.likes -= 1;
-            }
+              if(heart.classList.contains("active")) {
+                // j'incrémente dans la data like de la photographie sur la page
+                likes.textContent = photographie.likes += 1;
+                // j'incrémente dans la data like de la photographie dans le local storage
+                selectedPhotographies[objIndex].likes += 1;
+                // j'inscris la liste mise à jour des photographies concernées
+                localStorage.setItem('selectedWorksPhotograph', JSON.stringify(selectedPhotographies))
+              } else {
+                likes.textContent = photographie.likes -= 1;
+                selectedPhotographies[objIndex].likes -= 1;
+                localStorage.setItem('selectedWorksPhotograph', JSON.stringify(selectedPhotographies))
+              }
+// je récupère mon dom, ainsi que la fonction qui exécute la construction des éléments likes / tarif par jour
+// en la replacant dans mon dom, la fonctionnalité getUserPrice() va se réexécuter ainsi que le calcul des likes total, maj
+              const photographersHeader = document.querySelector(".photograph-header");
+              const photographerModel = photographerPageFactory();
+              const userPrice = photographerModel.getUserPrice();
+              photographersHeader.appendChild(userPrice);
 
           }
           

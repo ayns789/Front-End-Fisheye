@@ -100,9 +100,9 @@ async function init() {
 
 init();
 
-function displayModal() {
-         document.getElementById("contact_modal").style.display = "block";
-  };
+// function displayModal() {
+//          document.getElementById("contact_modal").style.display = "block";
+//   };
 
 //   function addTitleModal(e) {
 //     let h2StringName = document.getElementsByClassName(".titleH");
