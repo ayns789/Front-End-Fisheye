@@ -33,7 +33,7 @@ async function getPhotographerWorks(dataPhotographer) {
 
 
 async function displayData( selectedWorksPhotograph ) {
-    // récupération des classes html que je vais travailler
+    // récupération des classes html à travailler
     const photographersHeader = document.querySelector(".photograph-header");
     const photographiesSection = document.querySelector(".photographies-section");
     // récupération des méthodes du design pattern factory 
@@ -49,7 +49,7 @@ async function displayData( selectedWorksPhotograph ) {
 
     // itération pour sélectionner chaque photographie de la liste des photos
     selectedWorksPhotograph.forEach((photographie) => {
-        // récupération des classes html que je vais travailler
+        // récupération des classes html à vais travailler
         const photographieModel = photographerPageFactory();
         // récupération des méthodes du design pattern factory
         const userPhotoBody = photographieModel.getUserPhotoBody(photographie);
@@ -170,7 +170,7 @@ function btnDropdownFilter(selectedWorksPhotograph){
     }
 
     filtersGesture();
-    
+
     })
 }
 
