@@ -138,15 +138,15 @@ function checkEmail(e){
 
 ///////////////////////////////////////
 
-// check lastName user
+// check message user
 message.addEventListener('input', checkMessage);
 
 let messageOk = false;
 let valMessage = "";
 
-// check lastname saved in session storage
+// check message saved in session storage
 if (sessionStorage.messageSaved) {
-  lastName.value = sessionStorage.messageSaved;
+  message.value = sessionStorage.messageSaved;
 } 
 
 function checkMessage(e){
@@ -175,6 +175,15 @@ function checkMessage(e){
     }
 };
 
+// add function to see data of the session storage in console
+function pushConsoleLog(){
+  for(let i in sessionStorage) {
+    console.log(i + ' = ' + sessionStorage[i]);
+  }
+}
+
+pushConsoleLog();
+
 //////////////////////////////////////////
 
 const form = document.getElementById("form");
@@ -183,10 +192,9 @@ buttonSubmit.addEventListener('click', formValidation);
  
   // send form if conditions are ok
   form.addEventListener("submit", (e) => {
-
+    
     modalbg.style.display = "none";
     // sessionStorage.clear();
-  
   e.preventDefault();
 })
 
@@ -200,10 +208,10 @@ function formValidation(e){
 
 // check conditions to call the form submit
   if(checkFirstName() && checkLastName() && checkEmail() && checkMessage() ){
-    alert("le formulaire est bien enregistré");
+    // alert("le formulaire est bien enregistré");
     form.submit();
   } else {
-    alert("le formulaire est incomplet ou présente des erreurs");
+    // alert("le formulaire est incomplet ou présente des erreurs");
   }
   e.preventDefault();
   };
