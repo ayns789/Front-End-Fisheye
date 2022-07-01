@@ -42,6 +42,7 @@ async function displayData( selectedWorksPhotograph ) {
     const userPhotoHeader = photographerModel.getUserPhotoHeader();
     const userPrice = photographerModel.getUserPrice();
     // injection des éléments créés dans les éléments html récupérés
+
     photographersHeader.appendChild(userHeader);
     photographersHeader.appendChild(userPhotoHeader);
     photographersHeader.appendChild(userPrice);
@@ -58,68 +59,132 @@ async function displayData( selectedWorksPhotograph ) {
 };
 
 function updateData(data) {
+    // récupérer la liste des photographies du DOM
     const photographiesSection = document.querySelector(".photographies-section");
+
+    // vider la liste
     photographiesSection.textContent = "";
-    data.forEach((photographie) => {
-        // récupération des classes html que je vais travailler
+    data.forEach((media) => {
+        // récupération des articles html à travailler
         const filterPhotographieModel = photographerPageFactory();
         // récupération des méthodes du design pattern factory
-        const filterUserPhotoBody = filterPhotographieModel.getUserPhotoBody(photographie);
+        const filterUserPhotoBody = filterPhotographieModel.getUserPhotoBody(media);
         // injection des éléments créés dans les éléments html récupérés
         photographiesSection.appendChild(filterUserPhotoBody);
     });
 
 }
 
-async function init() {
-    // récupérer le résultat de la fonction de recherche des photos du photographe 
-    // sélectionné
-    let selectedWorksPhotograph = await getPhotographerWorks(dataPhotographer);
-    let resultFilters = [];
-
-    let dropdown = document.querySelector('select');
-    dropdown.addEventListener('change', function (e) {
-        e.target.value;
-        if (e.target.value == 'popularity') {
-            resultFilters = selectedWorksPhotograph.sort((a, b) => (a.likes > b.likes ? 1 : -1));
-        } else if (e.target.value == 'date') {
-            resultFilters = selectedWorksPhotograph.sort((a, b) => (a.date > b.date ? 1 : -1));
-        } else if (e.target.value == 'title') {
-            resultFilters = selectedWorksPhotograph.sort((a, b) => (a.title > b.title ? 1 : -1));
-        }
+function btnDropdownFilter(selectedWorksPhotograph){
+    // récupérer l'ensemble du dropdown
+    const dropdowns = document.querySelectorAll('.dropdownBlockDrop');
         
-        // selectedWorksPhotograph = resulFilters.map((x) => x);
-        // resulFilters.push(selectedWorksPhotograph);
-        updateData(resultFilters);
+    // faire une boucle sur les éléments du dropdown
+    dropdowns.forEach(dropdown => {
+        // récupérer chaque élément du dropdown
+        const select = dropdown.querySelector(".selectBtnDrop");
+        const caret = dropdown.querySelector(".caretDrop");
+        const menu = dropdown.querySelector(".menuDrop");
+        const options = dropdown.querySelectorAll(".menuDrop li");
+        const selected = dropdown.querySelector(".selectedDrop");
+        // const dropdown1 = dropdown.querySelector(".sectionDrop");
+    
+    
+        // ajout d'un event au click sur le bouton du dropdown
+        select.addEventListener('click', () => {
+            // ajout d'une classe de style pour des effets sur le bouton dropdown
+            select.classList.toggle('selectBtnDrop-clicked');
+            // ajout classe pour rotation de la flèche du bouton dropdown
+            caret.classList.toggle('caretDrop-rotate');
+            // ajout d'une classe de style pour le menu déroulant ouvert
+            menu.classList.toggle('menuDrop-open');
+        })
+    
+        // si le menu dropdown est ouvert et qu'on clique ailleurs, il se ferme et le caret du bouton reprend sa position 
+        document.addEventListener("mouseup", function(event) {
+            if(menu.contains('menuDrop-open')){
+            // if (!menu.contains(event.target) || select.contains(event.target)) {
+            // if (!menu.contains(event.target) || select.classList.contains('selectBtnDrop-clicked')) {
+                    if (!menu.contains(event.target)) {
+                        menu.classList.remove('menuDrop-open');
+                        caret.classList.remove('caretDrop-rotate');
+                        return true;
+                    } 
+                    // else if(select.contains(event.target)){
+                    //         menu.classList.remove('menuDrop-open');
+                    //         caret.classList.remove('caretDrop-rotate');
+                    //         return true;
+                    //     }
+                }
+            
+            //  if(select.classList.contains('selectBtnDrop-clicked')){
+            //     menu.classList.remove('menuDrop-open');
+            //     caret.classList.remove('caretDrop-rotate');
+            //     return true;
+            // }
+        });
 
-    });
-    // appeler displayData en passant les arguments des données du photographe et de 
-    // ses photographies
+        function filtersGesture(){
+        // création d'un tableau vide à objectif de prendre la valeur du filtre sélectionné
+        let resultFilters = [];
+    
+        // boucle sur tous les éléments de la liste
+        options.forEach(option =>{
+            // ajout d'un event au click sur une option du menu sélectionnée
+            option.addEventListener('click', () => {
+                // affecter la valeur texte de l'option cliquée à la valeur du texte du bouton dropdown
+                selected.innerText = option.innerText;
+                //  retrait des classes de style aux éléments modifiés à l'ouverture du dropdown
+                select.classList.remove('selectBtnDrop-clicked');
+                caret.classList.remove('caretDrop-rotate');
+                menu.classList.remove('menuDrop-open');
+                
+                // filtre en fonction de l'élément sélectionné du menu + réécriture des éléments du menu
+                if (selected.innerText == 'Popularité') {
+                    resultFilters = selectedWorksPhotograph.sort((a, b) => (a.likes > b.likes ? 1 : -1));
+                    options[0].innerText = 'Date';
+                    options[1].innerText = 'Titre';
+                } else if (selected.innerText == 'Date') {
+                    resultFilters = selectedWorksPhotograph.sort((a, b) => (a.date > b.date ? 1 : -1));
+                    options[0].innerText = 'Popularité';
+                    options[1].innerText = 'Titre';
+                } else if (selected.innerText == 'Titre') {
+                    resultFilters = selectedWorksPhotograph.sort((a, b) => (a.title > b.title ? 1 : -1));
+                    options[0].innerText = 'Popularité';
+                    options[1].innerText = 'Date';
+                }
+    
+                // envoi de la liste filtrée en fonction de la sélection faite, à la fonction qui 
+                updateData(resultFilters);
+                
+                // // supprimer la classe active sur les éléments de la liste du menu
+                // options.forEach(option => {
+                //     option.classList.remove('.activeDrop');
+                // })
+                
+                // // ajout de la classe active sur l'élément clické
+                // option.classList.add('activeDrop');
+                
+            })
+        })
+    }
+
+    filtersGesture();
+    
+    })
+}
+
+async function init() {
+    // récupérer le résultat de la fonction de recherche des photos du photographe sélectionné
+    let selectedWorksPhotograph = await getPhotographerWorks(dataPhotographer);
+    // appeler la fonction pour détecter le bouton dropdown et gérer les filtres de la liste des photographies
+    btnDropdownFilter(selectedWorksPhotograph);
+    // envoyer par défaut la liste triée sur les likes au design pattern factory via la fonction displayData 
     displayData(selectedWorksPhotograph.sort((a, b) => (a.likes > b.likes ? 1 : -1)));
 };
 
 init();
 
-// function displayModal() {
-//          document.getElementById("contact_modal").style.display = "block";
-//   };
-
-//   function addTitleModal(e) {
-//     let h2StringName = document.getElementsByClassName(".titleH");
-//     // h2StringName.setAttribute('style', 'white-space: pre;');
-//     // h2StringName.textContent += " \r \n "
-//     // h2StringName.textContent += dataPhotographer.name;
-//     h2StringName.textContent += `${dataPhotographer.name}`;
-//     // return h2StringName;
-//   }
 
 
-// getPhotographerWorks(SelectedPhotographer);
-// gather = regrouper
-
-// const heartClicked = document.querySelectorAll('i');
-// heartClicked.addEventListener("click", `incrementLikes(${photographie.id})`);
-// function incrementLikes(id){
-//     console.log(id);
-//   }
 

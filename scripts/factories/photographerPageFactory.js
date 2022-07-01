@@ -64,7 +64,7 @@ export function photographerPageFactory( ) {
         return (div2);
     }
 
-
+    // fonction pour créer la partie du header qui contient le tarif et le nombre de likes du photographe
     function getUserPrice() {
 
       // récupération des données du photographe dans le local storage 
@@ -99,6 +99,7 @@ export function photographerPageFactory( ) {
         return (div3);
     }
 
+    // fonction pour créer le corps de la page avec chaque article du photographe
     function getUserPhotoBody(photographie) {
 
       // création d'objets pour représenter les articles indépendament
@@ -216,7 +217,13 @@ export function photographerPageFactory( ) {
           
           return (article);
       }
+      // function getNameModal() {
+      //   const modalName = document.getElementById("titlePhotograph");
+      //   modalName.textContent = objPhotographer.name;
+      //   return modalName;
+
+      // }
       
     
-    return { getUserHeader, getUserPhotoHeader, getUserPrice, getUserPhotoBody};
+    return { getUserHeader, getUserPhotoHeader, getUserPrice, getUserPhotoBody };
 }

@@ -13,49 +13,65 @@
     <header>
       <img src="assets/images/logo.png" class="logo" />
     </header>
+
     <main id="main">
       <div class="photograph-header">
         <div class="center-block">
           <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
         </div>
       </div>
-      <section class="filterBy">
-        <label class="filterBy_label" for="filter" aria-label="Trier par">Trier par</label>
-        <select class="dropdown" name="trigger" id="filter">
-          <option class="dropdown_list" value="popularity">Popularité</option>
-          <option class="dropdown_list" value="date">Date</option>
-          <option class="dropdown_list" value="title">Titre</option>
-        </select>
-      </section>
+
+      <div class="dropdownBlockDrop">
+        <div class="sectionDrop">
+          <span class="textTrier">Trier par </span>
+          <div class="dropdown1">
+            <div class="selectBtnDrop">
+              <span class="selectedDrop">Popularité</span>
+              <div class="caretDrop"></div>
+            </div>
+            <ul class="menuDrop">
+              <li class="activeDrop">Date</li>
+              <li>Titre</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
       <div class="photographies-section"></div>
     </main>
     <div id="contact_modal">
       <div class="modal">
         <header class="modalH">
           <h2 class="titleH">Contactez moi</h2>
+          <h2 id="titlePhotograph"></h2>
           <img src="assets/icons/close.svg" onclick="closeModal()" />
         </header>
-        <form>
+        <form name="contactMe" action="photographer.html" method="get" id="form">
           <div>
-            <label>Prénom</label>
-            <input />
+            <label for="first">Prénom</label>
+            <input class="text-control" type="text" id="first" name="first" />
+            <span id="firstNameError"></span>
           </div>
           <div>
-            <label>Nom</label>
-            <input />
+            <label for="last">Nom</label>
+            <input class="text-control" type="text" id="last" name="last" />
+            <span id="lastNameError"></span>
           </div>
           <div>
-            <label>Email</label>
-            <input />
+            <label for="email">Email</label>
+            <input class="text-control" type="email" id="email" name="email" />
+            <span id="emailError"></span>
           </div>
           <div>
-            <label>Votre message</label>
-            <input />
+            <label for="message">Votre message</label>
+            <input class="text-control" type="text" id="message" name="message" />
+            <span id="messageError"></span>
           </div>
-          <button class="contact_button">Envoyer</button>
+          <button id="btn-submit" type="submit">Envoyer</button>
         </form>
       </div>
     </div>
+
     <script src="/scripts/utils/contactForm.js"></script>
     <script src="scripts/factories/Photographer.js"></script>
     <script type="module" src="scripts/pages/photographer.js"></script>
