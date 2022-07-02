@@ -42,35 +42,73 @@
     <div id="contact_modal">
       <div class="modal">
         <header class="modalH">
-          <h2 class="titleH">Contactez moi</h2>
-          <h2 id="titlePhotograph"></h2>
+          <div class="titleNameAlign">
+            <h2 class="titleH">Contactez moi</h2>
+            <h2 id="titlePhotograph"></h2>
+          </div>
           <img src="assets/icons/close.svg" onclick="closeModal()" />
         </header>
         <form name="contactMe" action="photographer.html" method="get" id="form">
           <div>
             <label for="first">Prénom</label>
-            <input class="text-control" type="text" id="first" name="first" />
+            <input
+              class="text-control"
+              type="text"
+              aria-required="true"
+              aria-label="prénom"
+              id="first"
+              name="first name"
+            />
             <span id="firstNameError"></span>
           </div>
           <div>
             <label for="last">Nom</label>
-            <input class="text-control" type="text" id="last" name="last" />
+            <input
+              class="text-control"
+              type="text"
+              aria-required="true"
+              aria-label="nom"
+              id="last"
+              name="last name"
+            />
             <span id="lastNameError"></span>
           </div>
           <div>
             <label for="email">Email</label>
-            <input class="text-control" type="email" id="email" name="email" />
+            <input
+              class="text-control"
+              type="email"
+              aria-required="true"
+              aria-label="email"
+              id="email"
+              name="email"
+            />
             <span id="emailError"></span>
           </div>
           <div>
             <label for="message">Votre message</label>
-            <input class="text-control" type="text" id="message" name="message" />
+            <input
+              class="text-control inputForm2"
+              type="text"
+              aria-required="true"
+              aria-label="message"
+              id="message"
+              name="message"
+            />
             <span id="messageError"></span>
           </div>
           <button id="btn-submit" type="submit">Envoyer</button>
         </form>
       </div>
     </div>
+
+    <!-- <div class="lightbox">
+      <button class="lightbox__close"></button>
+      <img src="assets/icons/close.svg" class="lightbox__close" />
+      <div class="lightbox__next"></div>
+      <div class="lightbox__prev"></div>
+      <div class="lightbox__container"></div>
+    </div> -->
 
     <script src="/scripts/utils/contactForm.js"></script>
     <script src="scripts/factories/Photographer.js"></script>

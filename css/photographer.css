@@ -214,7 +214,7 @@ order : 1;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    max-width: 18.75em;
+    max-width: 21.8em;
 }
 
 .price-fixed {
@@ -241,13 +241,13 @@ order : 1;
 
 .photographies-section article img {
     object-fit: cover;
-    width: 18.8em;
-    height: 21.8em;
+    width: 21.8em;
+    height: 18.8em;
 }
 .photographies-section article video {
     object-fit: cover;
-    width: 18.8em;
-    height: 21.8em;
+    width: 21.8em;
+    height: 18.8em;
     /* aspect-ratio: 116.67%; */
 }
 .block-photographies {
@@ -278,103 +278,8 @@ order : 1;
     text-overflow: ellipsis;
     white-space: nowrap;
 }
-/* ///////////////////////////// MODAL ///////////////////////////////// */
 
-#contact_modal {
-    display: none;
-}
 
-.contact_button, #btn-submit {
-    font-size: 1.25em;
-    font-weight: bold;
-    color: white;
-    padding: 0.68em;
-    width: 10.62em;
-    height: 4.37em;
-    border: none;
-    background-color: #901C1C;
-    border-radius: 0.31em;
-    cursor: pointer;
-}
-
-.modal {
-    border-radius: 0.31em;
-    background-color: #DB8876;
-    /* width: 50%; */
-    /* position: fixed; */
-    top: 5%;
-    left : 27%;
-    /* overflow: auto; */
-    z-index: 1;
-    /* overflow: hidden; */
-    /* position: absolute; */
-    /* position: relative; */
-    position: fixed;
-    /* height: 100%; */
-    /* left: 5em; */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    /* justify-content: space-between; */
-    padding: 2.18em; 
-    margin: auto; 
-    /* margin: 15% auto; */
-    width: 100%;
-    /* height: calc(100% - 10px - 10px); */
-    /* max-width: 700px; */
-    max-width: 41.81em;
-    max-height: 56.25em;
-}
-
-.modal header {
-    justify-content: space-between;
-    width: 100%;
-     margin-bottom: 0;
-    padding-bottom: 0;
-}
-
-.modal header img {
-    cursor: pointer;
-}
-
-.modal header h2 {
-    font-size: 4em;
-    font-weight: normal;
-    text-align: center;
-    margin-top: 0.93em;
-    padding-top: 0;
-    /* margin-bottom: 0;
-    padding-bottom: 0; */
-}
-
-form {
-    display: flex;
-    width: 100%;
-    flex-direction: column;
-    align-items: flex-start;
-}
-
-form label {
-    color: #312E2E;
-    font-size: 2.25em;
-}
-
-form div {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    align-items: self-start;
-    margin-bottom: 1.62em;
-}
-
-form input {
-    width: 97%;
-    height: 3.25em;
-    border: none;
-    border-radius: 0.31em;
-    font-size: 1.62em;
-    padding-left: 0.94em;
-}
 /* ////////////////////////// RESPONSIVE //////////////////////////////// */
 
 @media screen and (max-width: 1500px){

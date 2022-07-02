@@ -146,6 +146,8 @@ export function photographerPageFactory( ) {
           // affectation de classes et de valeurs aux éléments
           h2likes.className = "block-photographies";
           heart.className = "fa-solid fa-heart";
+          img.className = "media";
+          video.className = "media";
           
 
           // dissocier les photos et vidéos pour certaines affectations 

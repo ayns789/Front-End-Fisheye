@@ -102,26 +102,12 @@ function btnDropdownFilter(selectedWorksPhotograph){
     
         // si le menu dropdown est ouvert et qu'on clique ailleurs, il se ferme et le caret du bouton reprend sa position 
         document.addEventListener("mouseup", function(event) {
-            if(menu.contains('menuDrop-open')){
-            // if (!menu.contains(event.target) || select.contains(event.target)) {
-            // if (!menu.contains(event.target) || select.classList.contains('selectBtnDrop-clicked')) {
-                    if (!menu.contains(event.target)) {
-                        menu.classList.remove('menuDrop-open');
-                        caret.classList.remove('caretDrop-rotate');
-                        return true;
-                    } 
-                    // else if(select.contains(event.target)){
-                    //         menu.classList.remove('menuDrop-open');
-                    //         caret.classList.remove('caretDrop-rotate');
-                    //         return true;
-                    //     }
-                }
-            
-            //  if(select.classList.contains('selectBtnDrop-clicked')){
-            //     menu.classList.remove('menuDrop-open');
-            //     caret.classList.remove('caretDrop-rotate');
-            //     return true;
-            // }
+                if(menu.classList.contains('menuDrop-open') && !event.target.classList.contains('selectBtnDrop')){
+                    menu.classList.remove('menuDrop-open');
+                    caret.classList.remove('caretDrop-rotate');
+                    select.classList.remove('selectBtnDrop-clicked');
+                    // return;
+                };
         });
 
         function filtersGesture(){

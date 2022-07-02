@@ -1,7 +1,14 @@
+// import {photographerPageFactory} from "../factories/photographerPageFactory.js";
+
+
+
 const modal = document.getElementById("contact_modal");
 
 function displayModal() {
 	modal.style.display = "block";
+  let dataPhotographer = JSON.parse(localStorage.getItem("photographerInfo"));
+  const h2Name = document.getElementById("titlePhotograph");
+  h2Name.innerText = dataPhotographer.name;
 }
 
 function closeModal() {
@@ -175,11 +182,15 @@ function checkMessage(e){
     }
 };
 
-// add function to see data of the session storage in console
+// add function to see data of the session storage in console ( the user data validate in modal form )
 function pushConsoleLog(){
-  for(let i in sessionStorage) {
-    console.log(i + ' = ' + sessionStorage[i]);
-  }
+  // for(let i in sessionStorage) {
+  //   console.log(i + ' = ' + sessionStorage[i]);
+  // }
+  console.log("prénom : " + sessionStorage.firstnameSaved);
+  console.log("nom : " + sessionStorage.lastnameSaved);
+  console.log("email : " + sessionStorage.emailSaved);
+  console.log("message : " + sessionStorage.messageSaved);
 }
 
 pushConsoleLog();

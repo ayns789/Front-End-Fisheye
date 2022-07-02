@@ -18,20 +18,6 @@ let photographers = [];
         return photographers;
     }
 
- // let updateLike = document.getElementsByClassName(".totaLike");
-            
-//  heart.classList.toggle("active");
-//  if(heart.classList.contains("active")) {
-//    photographie.likes += 1;
-//    // updateLike.textContent = photographie.likes++;
-//    } else {
-//    likes.textContent = photographie.likes -= 1;
-   
-
-//    // selectedPhotographies.likes -= 1;
-//  }
-
-// sumL.className = "totaLike";
     async function displayData(photographers) {
         const photographersSection = document.querySelector(".photographer_section");
 
