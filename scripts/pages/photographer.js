@@ -101,12 +101,12 @@ function btnDropdownFilter(selectedWorksPhotograph){
         })
     
         // si le menu dropdown est ouvert et qu'on clique ailleurs, il se ferme et le caret du bouton reprend sa position 
-        document.addEventListener("mouseup", function(event) {
+        document.addEventListener("mouseup", (event) => {
                 if(menu.classList.contains('menuDrop-open') && !event.target.classList.contains('selectBtnDrop')){
+                // if(!event.target.classList.contains('selectBtnDrop')){
                     menu.classList.remove('menuDrop-open');
                     caret.classList.remove('caretDrop-rotate');
                     select.classList.remove('selectBtnDrop-clicked');
-                    // return;
                 };
         });
 
@@ -120,10 +120,6 @@ function btnDropdownFilter(selectedWorksPhotograph){
             option.addEventListener('click', () => {
                 // affecter la valeur texte de l'option cliquée à la valeur du texte du bouton dropdown
                 selected.innerText = option.innerText;
-                //  retrait des classes de style aux éléments modifiés à l'ouverture du dropdown
-                select.classList.remove('selectBtnDrop-clicked');
-                caret.classList.remove('caretDrop-rotate');
-                menu.classList.remove('menuDrop-open');
                 
                 // filtre en fonction de l'élément sélectionné du menu + réécriture des éléments du menu
                 if (selected.innerText == 'Popularité') {
@@ -171,6 +167,6 @@ async function init() {
 
 init();
 
-
+/////////////////// LIGHTBOX ////////////////////
 
 

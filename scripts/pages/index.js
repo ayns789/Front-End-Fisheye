@@ -13,7 +13,7 @@ let photographers = [];
             console.log(e);
         }
 
-        // console.log(photographers.photographers[0]);
+        console.log(photographers.photographers[0]);
 
         return photographers;
     }
