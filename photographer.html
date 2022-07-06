@@ -10,7 +10,7 @@
     <title>Fisheye - photographe</title>
   </head>
   <!-- <body onload="loadPagePhotographer()"> -->
-  <body>
+  <body">
     <header>
       <img src="assets/images/logo.png" class="logo" />
     </header>
@@ -104,26 +104,24 @@
     </div>
 
     <div class="lightbox">
-      <div class="lightboxContentMiddle">
-        <span
-          class="fas fa-chevron-left lightbox__prev"
-          role="link"
-          aria-label="image précédente"
-        ></span>
-        <div class="lightbox__container"><img src="" alt="" /></div>
-        <span class="fas fa-times close_bigger lightbox__close" aria-label="Close dialog"></span>
-        <span
-          class="fas fa-chevron-right lightbox__next"
-          role="link"
-          aria-label="image suivante"
-        ></span>
-      </div>
+      <span
+        class="fas fa-chevron-left lightbox__prev"
+        role="link"
+        aria-label="image précédente"
+      ></span>
+      <div class="lightbox__container"><img src="" alt="" /></div>
+      <span class="fas fa-times close_bigger lightbox__close" aria-label="Close dialog"></span>
+      <span
+        class="fas fa-chevron-right lightbox__next"
+        role="link"
+        aria-label="image suivante"
+      ></span>
     </div>
 
     <script src="/scripts/utils/contactForm.js"></script>
     <script src="scripts/factories/Photographer.js"></script>
     <script type="module" src="scripts/pages/photographer.js"></script>
-    <script type="module" src="scripts/utils/lightbox.js"></script>
+    <script src="scripts/utils/lightbox.js"></script>
     <footer></footer>
   </body>
 </html>

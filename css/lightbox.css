@@ -5,33 +5,12 @@
     left: 0;
     width: 100%;
     height: 100%;
-    /* background-color: rgba(255, 255, 255, 1); */
-    background-color: rgba(255, 255, 255, .9);
+    background-color: rgba(255, 255, 255, 1);
+    /* background-color: rgba(255, 255, 255, .9); */
     /* background-color:  brightness(0) invert(1); */
-    /* background-color: red; */
     z-index: 10;
     animation: lightboxIn 0.5s;
 }
-
-/* .show{
-    display: block;
-} */
-
-/* .lightbox__next,
-.lightbox__prev {
-    display: block;
-    font-size: 1.12em;
-    font-weight: 700;
-    width: 24px;
-    height: 24px;
-    border-top: 6px #901C1C solid;
-    border-left: 6px #901C1C solid;
-    transform: rotate(225deg);
-    z-index: 1;
-    position: fixed;
-    top: 50%;
-    cursor: pointer;
-} */
 
 .lightbox__next, 
 .lightbox__prev {
@@ -42,7 +21,7 @@
     font-size: 36px;
     color: #901C1C;
     z-index: 11;
-    top: 50%;
+    top: 45%;
     margin-top: -14px;
     cursor: pointer;
 }
@@ -54,12 +33,13 @@
 
 .lightbox__prev {
     right: auto;
-    left: 130px;
+    left: 500px;
+    /* left: 27%; */
     transform: rotate(360deg);
 }
 .lightbox__next {
     left: auto;
-    right: 130px;
+    right: 500px;
 }
 
 .lightbox__close {
@@ -67,8 +47,8 @@
     border: none;
     position: fixed;
     background: transparent;
-    top: 20px;
-    right: 130px;
+    top: 12vh;
+    right: 500px;
     z-index: 12;
     color: #901C1C;
     /* overflow: hidden; */
@@ -90,20 +70,15 @@
     /* max-width: 900px; */
     position: absolute;
     left: 0%;
-right: 0%;
-top: 0%;
-bottom: 0%;
-    /* margin: 30px 145px 30px 145px; */
-
-    /* min-height: 100vh; */
-    /* max-height: 400px;
-    max-width: 400px; */
+    right: 0%;
+    top: 0%;
+    bottom: 0%;
 }
 .lightbox__container img, 
 .lightbox__container video {
     width: calc(100% - 8em - 8em);
     max-width: 800px;
-    height: auto;
+    height: 80vh;
     /* min-height: 70vh; */
     max-height: 750px;
     object-fit: cover;
@@ -113,15 +88,11 @@ bottom: 0%;
 }
 
 .lightbox__container h2 {
-margin-left: 0;
-}
-
-.lightboxContentMiddle {
-    display: flex;
-    flex-direction: row;
-    padding: 0;
-    margin: 0;
-background-color: red;
+    position: absolute;
+    top: 91%;
+    left: 29%;
+    /* margin-left: -20em; */
+color: #901C1C;
 }
 
 @keyframes lightboxIn {
@@ -129,3 +100,101 @@ background-color: red;
     to {opacity: 1;}
 }
 
+/* 1860px /  */
+
+@media screen and (max-width: 1860px){
+    /* .lightbox__container h2 {
+        left: 60%;
+      } */
+    .lightbox__prev {
+        right: auto;
+        left: 450px;
+    }
+    .lightbox__next {
+        left: auto;
+        right: 450px;
+    }
+    
+    .lightbox__close {
+        /* top: 50px; */
+        right: 450px;
+    }
+  }
+@media screen and (max-width: 1760px){
+    .lightbox__container h2 {
+        left: 27%;
+      }
+    .lightbox__prev {
+        right: auto;
+        left: 350px;
+    }
+    .lightbox__next {
+        left: auto;
+        right: 350px;
+    }
+    
+    .lightbox__close {
+        /* top: 45px; */
+        right: 350px;
+    }
+  }
+@media screen and (max-width: 1560px){
+    .lightbox__container h2 {
+        left: 24%;
+      }
+    .lightbox__prev {
+        right: auto;
+        left: 250px;
+    }
+    .lightbox__next {
+        left: auto;
+        right: 250px;
+    }
+    
+    .lightbox__close {
+        /* top: 35px; */
+        right: 250px;
+    }
+  }
+@media screen and (max-width: 1360px){
+    .lightbox__container h2 {
+        left: 20%;
+      }
+    .lightbox__prev {
+        right: auto;
+        left: 150px;
+    }
+    .lightbox__next {
+        left: auto;
+        right: 150px;
+    }
+    
+    .lightbox__close {
+        /* top: 25px; */
+        right: 150px;
+    }
+  }
+@media screen and (max-width: 1160px){
+    .lightbox__container h2 {
+        left: 15%;
+      }
+    .lightbox__prev {
+        right: auto;
+        left: 50px;
+    }
+    .lightbox__next {
+        left: auto;
+        right: 50px;
+    }
+    
+    .lightbox__close {
+        /* top: 15px; */
+        right: 50px;
+    }
+  }
+
+  @media screen and (max-width: 1080px){
+  .lightbox__container h2 {
+    left: 13%;
+  }
+}

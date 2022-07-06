@@ -65,7 +65,7 @@ window.onload = () => {
         );
         } else if (mediaSelected.video) {
         return (
-            '<video autoplay loop class="media">' +
+            '<video autoplay loop controls="controls class="media">' +
             '<source src="' +
             `assets/photographies/${mediaSelected.video}` +
             '" alt="' +
@@ -126,3 +126,6 @@ window.onload = () => {
     })
 
 }
+
+
+
