@@ -232,6 +232,8 @@ export function photographerPageFactory( ) {
               const userPrice = photographerModel.getUserPrice();
               photographersHeader.appendChild(userPrice);
 
+              loadLightbox();
+
           }
           
           return (article);

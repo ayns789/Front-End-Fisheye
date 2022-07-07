@@ -62,6 +62,9 @@ function updateData(data) {
     // récupérer la liste des photographies du DOM
     const photographiesSection = document.querySelector(".photographies-section");
 
+    // let selectedWorksPhotograph = data;
+    // console.log(selectedWorksPhotograph)
+    // localStorage.setItem('selectedWorksPhotograph', JSON.stringify(data));
     // vider la liste
     photographiesSection.textContent = "";
     data.forEach((media) => {
@@ -126,14 +129,17 @@ function btnDropdownFilter(selectedWorksPhotograph){
                     resultFilters = selectedWorksPhotograph.sort((a, b) => (a.likes > b.likes ? 1 : -1));
                     options[0].innerText = 'Date';
                     options[1].innerText = 'Titre';
+                    // localStorage.setItem('selectedWorksPhotograph', JSON.stringify(resultFilters));
                 } else if (selected.innerText == 'Date') {
                     resultFilters = selectedWorksPhotograph.sort((a, b) => (a.date > b.date ? 1 : -1));
                     options[0].innerText = 'Popularité';
                     options[1].innerText = 'Titre';
+                    // localStorage.setItem('selectedWorksPhotograph', JSON.stringify(resultFilters));
                 } else if (selected.innerText == 'Titre') {
                     resultFilters = selectedWorksPhotograph.sort((a, b) => (a.title > b.title ? 1 : -1));
                     options[0].innerText = 'Popularité';
                     options[1].innerText = 'Date';
+                    // localStorage.setItem('selectedWorksPhotograph', JSON.stringify(resultFilters));
                 }
     
                 // envoi de la liste filtrée en fonction de la sélection faite, à la fonction qui 
