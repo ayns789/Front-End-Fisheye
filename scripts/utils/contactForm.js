@@ -1,11 +1,13 @@
 // import {photographerPageFactory} from "../factories/photographerPageFactory.js";
 
 
-
+const body = document.querySelectorAll('body *');
 const modal = document.getElementById("contact_modal");
 
 function displayModal() {
 	modal.style.display = "block";
+	modal.style.backgroundColor = "rgba(255, 255, 255, 1)";
+	// body.style.color = "rgba(255, 255, 255, 1)";
   let dataPhotographer = JSON.parse(localStorage.getItem("photographerInfo"));
   const h2Name = document.getElementById("titlePhotograph");
   h2Name.innerText = dataPhotographer.name;
@@ -31,7 +33,7 @@ const errorMessage = document.getElementById("messageError");
 const regexLetters = /^[ a-zA-ZàèìòùÀÈÌÒÙáéíóúýÁÉÍÓÚÝâêîôûÂÊÎÔÛãñõÃÑÕäëïöüÿÄËÏÖÜŸçÇßØøÅåÆæœ'`'\-]+$/;
 const regexMail = /^[a-z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,}$/;
 
-// color contrast yellow : #FFFF48   #005671
+// color contrast yellow : #FFFF48   #005671   #901C1C
 ///////////////////////////////////////////
 
 // get firstName user
@@ -53,16 +55,25 @@ function checkFirstName(e){
 
   if( valFirstName.length < 2 ){
     errorFirstName.innerText = "Vous devez saisir au moins 2 caractères";
-    errorFirstName.style.color = "#0000E0";
-    errorFirstName.style.fontSize = "26px";
+    // errorFirstName.style.color = "#0000E0";
+    errorFirstName.style.color = "red";
+    errorFirstName.style.backgroundColor = "white";
+    errorFirstName.style.borderRadius = "0.5em 0.5em 0 0";
+    errorFirstName.style.padding = "0 0.5em 0 0.5em";
+    errorFirstName.style. border = "1px solid red";
+    errorFirstName.style.fontSize = "1.4em";
     errorFirstName.style.fontWeight = "bold";
-    errorFirstName.style.marginTop = "5px";
+    errorFirstName.style.marginBottom = "-0.2em";
   } else if (!regexLetters.test(valFirstName)){ 
       errorFirstName.innerText = "Vous devez saisir uniquement des lettres";
-      errorFirstName.style.color = "#0000E0";
-      errorFirstName.style.fontSize = "26px";
+      errorFirstName.style.color = "red";
+      errorFirstName.style.backgroundColor = "white";
+      errorFirstName.style.borderRadius = "0.5em 0.5em 0 0";
+      errorFirstName.style.marginBottom = "-0.2em";
+      errorFirstName.style.padding = "0 0.5em 0 0.5em";
+      errorFirstName.style. border = "1px solid red";
+      errorFirstName.style.fontSize = "1.4em";
       errorFirstName.style.fontWeight = "bold";
-      errorFirstName.style.marginTop = "5px";
     } else {
       errorFirstName.innerText = "";
       firstNameOk = true;
@@ -92,17 +103,25 @@ function checkLastName(e){
 
   if( valLastName.length < 2 ){
     errorLastName.innerText = "Vous devez saisir au moins 2 caractères";
-    errorLastName.style.color = "#0000E0";
-    errorLastName.style.fontSize = "26px";
+    errorLastName.style.color = "red";
+    errorLastName.style.backgroundColor = "white";
+    errorLastName.style.borderRadius = "0.5em 0.5em 0 0";
+    errorLastName.style.marginBottom = "-0.2em";
+    errorLastName.style.padding = "0 0.5em 0 0.5em";
+    errorLastName.style. border = "1px solid red";
+    errorLastName.style.fontSize = "1.4em";
     errorLastName.style.fontWeight = "bold";
-    errorLastName.style.marginTop = "5px";
     
   } else if (!regexLetters.test(valLastName)){ 
       errorLastName.innerText = "Vous devez saisir uniquement des lettres";
-      errorLastName.style.color = "#0000E0";
-      errorLastName.style.fontSize = "26px";
+      errorLastName.style.color = "red";
+      errorLastName.style.backgroundColor = "white";
+      errorLastName.style.borderRadius = "0.5em 0.5em 0 0";
+      errorLastName.style.marginBottom = "-0.2em";
+      errorLastName.style.padding = "0 0.5em 0 0.5em";
+      errorLastName.style. border = "1px solid red";
+      errorLastName.style.fontSize = "1.4em";
       errorLastName.style.fontWeight = "bold";
-      errorLastName.style.marginTop = "5px";
     } else {
       errorLastName.innerText = "";
       lastNameOk = true;
@@ -135,10 +154,14 @@ function checkEmail(e){
       return valEmail;
     } else {
       errorEmail.innerText = "Vous devez saisir une adresse email valide";
-      errorEmail.style.color = "#0000E0";
-      errorEmail.style.fontSize = "26px";
+      errorEmail.style.color = "red";
+      errorEmail.style.backgroundColor = "white";
+      errorEmail.style.borderRadius = "0.5em 0.5em 0 0";
+      errorEmail.style.marginBottom = "-0.2em";
+      errorEmail.style.padding = "0 0.5em 0 0.5em";
+      errorEmail.style. border = "1px solid red";
+      errorEmail.style.fontSize = "1.4em";
       errorEmail.style.fontWeight = "bold";
-      errorEmail.style.marginTop = "5px";
       emailOk = false;
     }
 };
@@ -164,17 +187,25 @@ function checkMessage(e){
 
   if( valMessage.length < 20 ){
     errorMessage.innerText = "Vous devez saisir au moins 20 caractères";
-    errorMessage.style.color = "#0000E0";
-    errorMessage.style.fontSize = "26px";
+    errorMessage.style.color = "red";
+    errorMessage.style.backgroundColor = "white";
+    errorMessage.style.borderRadius = "0.5em 0.5em 0 0";
+    errorMessage.style.marginBottom = "-0.6em";
+    errorMessage.style.padding = "0 0.5em 0 0.5em";
+    errorMessage.style. border = "1px solid red";
+    errorMessage.style.fontSize = "1.1em";
     errorMessage.style.fontWeight = "bold";
-    errorMessage.style.marginTop = "5px";
     
   } else if (valMessage.length > 200 ){ 
     errorMessage.innerText = "Votre message est trop grand, 200caractères maximum";
-    errorMessage.style.color = "#0000E0";
-    errorMessage.style.fontSize = "26px";
+    errorMessage.style.color = "red";
+    errorMessage.style.backgroundColor = "white";
+    errorMessage.style.borderRadius = "0.5em 0.5em 0 0";
+    errorMessage.style.marginBottom = "-0.6em";
+    errorMessage.style.padding = "0 0.5em 0 0.5em";
+    errorMessage.style. border = "1px solid red";
+    errorMessage.style.fontSize = "1.1em";
     errorMessage.style.fontWeight = "bold";
-    errorMessage.style.marginTop = "5px";
     } else {
         errorMessage.innerText = "";
       messageOk = true;

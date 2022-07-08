@@ -15,51 +15,47 @@ function loadLightbox(){
     const links = document.querySelectorAll("article a");
 
     const regexVideo = "mp4";
+    let currentMedia;
+    let btnClicked = false;
     
-    let loadExecuted = false;
-    // links.addEventListener('click', () => {
-        // if(!executed) {
-            if(!loadExecuted) {
-        function load(){
-            loadExecuted = true;
-     
-// on ajout un écouteur d'événement à chaque média cliqué
-for(let link of links){
-    link.addEventListener("click", function(e){
-        e.preventDefault();
-        // on affiche la lightbox
-        lightbox.style.display = 'block';
-        // on récupère la partie du chemin du fichier, dans le chemin href 
-        let pathFileMedia = this.href.substring(43, 100);
+
+    function load(){
+        // si les boutons next / prev ne sont cliqués, on continue
+        if(btnClicked == false){
+            // on ajout un écouteur d'événement à chaque média cliqué
+            for(let link of links){
+                link.addEventListener("click", function(e){
+                    e.preventDefault();
+                    currentMedia = "";
+                    // on affiche la lightbox
+                    lightbox.style.display = 'block';
+                    // on récupère la partie du chemin du fichier, dans le chemin href 
+                    let pathFileMedia = this.href.substring(43, 100);
+                    
+                    // dissocier photos et vidéos pour les traiter selon le cas
+                    if(this.href.includes(regexVideo)){
+                        // trouver l'index du média sélectionné
+                        let index = selectedPhotographies.findIndex(object => {
+                            return object.video == pathFileMedia;
+                        });
+                        currentMedia = index;
+                        // envoyer à la fonction d'affichage des médias dans la lightbox
+                        displayLightbox(selectedPhotographies[currentMedia]);
+                    } else {
+                        let index = selectedPhotographies.findIndex(object => {
+                            return object.image == pathFileMedia;
+                        });
+                        currentMedia = index;
+                        displayLightbox(selectedPhotographies[currentMedia]);
+                    }
+                // btnClicked = false;
+                })
         
-        // dissocier photos et vidéos pour les traiter selon le cas
-        if(this.href.includes(regexVideo)){
-            // trouver l'index du média sélectionné
-            let index = selectedPhotographies.findIndex(object => {
-                return object.video == pathFileMedia;
-            });
-            // envoyer à la fonction d'affichage des médias dans la lightbox
-            displayLightbox(selectedPhotographies[index]);
-            index = "";
-        } else {
-            let index = selectedPhotographies.findIndex(object => {
-                return object.image == pathFileMedia;
-            });
-            
-            displayLightbox(selectedPhotographies[index]);
-            index = "";
-        }
-
-    })
-
-}
+            }
         }
     }
 
-       if(!loadExecuted) {
-        load();
-       }
-    // })
+    load();
 
     
     document.addEventListener("mouseup", (event) => {
@@ -67,117 +63,91 @@ for(let link of links){
             loadLightbox();
         }
     })
-    // decorator
-// function callItOnce(loadLightbox) {
-//     let called = false;
-//     return function() {
-//         if (!called) {
-//             called = true;
-//             return loadLightbox();
-//         }
-//         return;
-//     }
-// }
+
 
     // fonction qui va gérer l'affichage des médias de la lightbox
     function displayLightbox(currentMedia) {
         console.log(currentMedia)
         // remplira le contenu lightbox avec le média à afficher et son titre
         lightboxContainer.innerHTML = mediaLightbox(currentMedia);
-        // on sauvegarde dans le localstorage le média sélectionné
-        // localStorage.removeItem('currentMediaLightbox');
-        localStorage.setItem("currentMediaLightbox", JSON.stringify(currentMedia));
-        currentMedia = "";
-
+        // currentMedia = {};
     }
+
 
     // fonction qui va remplir le contenu de la lightbox selon photo ou video
     function mediaLightbox(mediaSelected) {
         // console.log(mediaSelected)
         if (mediaSelected.image) {
-        return (
-            '<img class="media" src="' +
-            `assets/photographies/${mediaSelected.image}` +
-            '" alt="' +
-            mediaSelected.title +
-            '"img>' +
-            '<h2 class="titre_photo_lightbox">' +
-            mediaSelected.title +
-            '</h2>'
-        );
+            return (
+                '<img class="media" src="' +
+                `assets/photographies/${mediaSelected.image}` +
+                '" alt="' +
+                mediaSelected.title +
+                '"img>' +
+                '<h2 class="titre_photo_lightbox">' +
+                mediaSelected.title +
+                '</h2>'
+            );
         } else if (mediaSelected.video) {
-        return (
-            '<video autoplay loop controls="controls" class="media">' +
-            '<source src="' +
-            `assets/photographies/${mediaSelected.video}` +
-            '" alt="' +
-            mediaSelected.title +
-            '" type=video/mp4>' +
-            '</video> ' +
-            '<h2 class="titre_photo_lightbox">' +
-            mediaSelected.title +
-            '</h2>'
-        );
+            return (
+                '<video autoplay loop controls="controls" class="media">' +
+                '<source src="' +
+                `assets/photographies/${mediaSelected.video}` +
+                '" alt="' +
+                mediaSelected.title +
+                '" type=video/mp4>' +
+                '</video> ' +
+                '<h2 class="titre_photo_lightbox">' +
+                mediaSelected.title +
+                '</h2>'
+            );
         }
-        mediaSelected ="";
-        
+        // mediaSelected ="";
     }
-    
-    // au clic sur flèche précédente
-    lightboxBtnPrev.addEventListener('click', () => {
-        let currentMedia = "";
-         currentMedia = JSON.parse(localStorage.getItem("currentMediaLightbox"));
-        //  console.log(currentMedia)
-        let index = 0;
-       index = selectedPhotographies.findIndex((obj => obj.id == currentMedia.id));
-    //    console.log(index)
-        index -= 1;
-        // console.log(index)
-        if (index < 0) {
-            index = selectedPhotographies.length - 1;
-        }
-        displayLightbox(selectedPhotographies[index]);
-        index = 0;
-        currentMedia = "";
-        // localStorage.setItem("currentMediaLightbox", JSON.stringify());
-    });
-    
+
 
     // au clic sur flèche suivante
-    lightboxBtnNext.addEventListener('click', () => {
-        let currentMedia = "";
-         currentMedia = JSON.parse(localStorage.getItem("currentMediaLightbox"));
-        //  console.log(currentMedia)
-        let index = 0;
-        // console.log(index)
-         index = selectedPhotographies.findIndex((obj => obj.id == currentMedia.id));
-        // console.log(index)
-            index += 1;
-            // console.log(index)
-            if (index === selectedPhotographies.length) {
-                index = 0;
-            }
-            displayLightbox(selectedPhotographies[index]);
-            index = 0;
-            currentMedia = "";
-            // localStorage.setItem("currentMediaLightbox", JSON.stringify());
-    })
+    lightboxBtnNext.addEventListener('click', displayBtnNext);
     
-    
-    // fermeture lightbox au clic sur la croix
-        lightboxBtnClose.addEventListener('click', () => {
-            lightbox.style.display = 'none';
-        });
+    function displayBtnNext() {
+        currentMedia ++;
+        // pour faire repartir la liste à 0 quand ca arrive au bout
+        if (currentMedia === selectedPhotographies.length) {
+            currentMedia = 0;
+        }
+        displayLightbox(selectedPhotographies[currentMedia]);
+        btnClicked = true;
+    }
 
-          // navigation au clavier, fleches gauche et droite, touche échap pour sortir
+
+    // au clic sur flèche précédente
+    lightboxBtnPrev.addEventListener('click', displayBtnPrev);
+
+    function displayBtnPrev() {
+        currentMedia -= 1;
+        if (currentMedia < 0) {
+            currentMedia = selectedPhotographies.length - 1;
+        }
+        displayLightbox(selectedPhotographies[currentMedia]);
+        btnClicked = true;
+    };
+    
+
+    // fermeture lightbox au clic sur la croix
+    lightboxBtnClose.addEventListener('click', () => {
+        lightbox.style.display = 'none';
+    });
+
+
+    // navigation au clavier, fleches gauche et droite, touche échap pour sortir
     window.addEventListener('keydown', function (e) {
-        if (e.key == 'lightboxBtnNext') {
-        displayNext();
+        if (e.target.key == 'lightboxBtnNext') {
+            displayBtnNext();
         }
-        if (e.key == 'lightboxBtnPrev') {
-        displayPrevious();
+        if (e.target.key == 'lightboxBtnPrev') {
+            displayBtnPrev();
         }
-        if (e.key == 'Escape') {
+        if (e.target.key == 'Escape') {
             lightboxContainer.style.display = 'none';
         }
     })
@@ -185,7 +155,6 @@ for(let link of links){
 }
 
 loadLightbox();
-// })
 
 
 

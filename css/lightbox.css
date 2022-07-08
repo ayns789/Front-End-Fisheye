@@ -17,11 +17,11 @@
     border: none;
     background: url("assets/images/arrowLeft.svg") center center / 100% 100%;
     position: fixed;
-    font-weight: 700;
-    font-size: 36px;
+    font-weight: 900;
+    font-size: 46px;
     color: #901C1C;
     z-index: 11;
-    top: 45%;
+    top: 50%;
     margin-top: -14px;
     cursor: pointer;
 }
@@ -34,7 +34,7 @@
 .lightbox__prev {
     right: auto;
     left: 500px;
-    /* left: 27%; */
+    /* left: 27vw; */
     transform: rotate(360deg);
 }
 .lightbox__next {
@@ -43,11 +43,11 @@
 }
 
 .lightbox__close {
-    font-size: 40px;
+    font-size: 50px;
     border: none;
     position: fixed;
     background: transparent;
-    top: 12vh;
+    top: 6vh;
     right: 500px;
     z-index: 12;
     color: #901C1C;
@@ -78,18 +78,18 @@
 .lightbox__container video {
     width: calc(100% - 8em - 8em);
     max-width: 800px;
-    height: 80vh;
+    height: 90vh;
     /* min-height: 70vh; */
     max-height: 750px;
     object-fit: cover;
-    margin-top: 2em;
+    margin-top: -0.5em;
     border-radius: 5px;
     animation: lightboxIn 0.5s;
 }
 
 .lightbox__container h2 {
     position: absolute;
-    top: 91%;
+    top: 92%;
     left: 29%;
     /* margin-left: -20em; */
 color: #901C1C;
@@ -103,9 +103,6 @@ color: #901C1C;
 /* 1860px /  */
 
 @media screen and (max-width: 1860px){
-    /* .lightbox__container h2 {
-        left: 60%;
-      } */
     .lightbox__prev {
         right: auto;
         left: 450px;
@@ -116,7 +113,6 @@ color: #901C1C;
     }
     
     .lightbox__close {
-        /* top: 50px; */
         right: 450px;
     }
   }
@@ -134,7 +130,6 @@ color: #901C1C;
     }
     
     .lightbox__close {
-        /* top: 45px; */
         right: 350px;
     }
   }
@@ -152,7 +147,6 @@ color: #901C1C;
     }
     
     .lightbox__close {
-        /* top: 35px; */
         right: 250px;
     }
   }
@@ -170,7 +164,6 @@ color: #901C1C;
     }
     
     .lightbox__close {
-        /* top: 25px; */
         right: 150px;
     }
   }
@@ -188,7 +181,6 @@ color: #901C1C;
     }
     
     .lightbox__close {
-        /* top: 15px; */
         right: 50px;
     }
   }

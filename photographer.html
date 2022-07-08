@@ -51,7 +51,7 @@
         </header>
         <form name="contactMe" action="photographer.html" method="get" id="form">
           <div>
-            <label for="first">Prénom</label>
+            <div class="alignError"><label for="first">Prénom</label><span id="firstNameError"></span></div>
             <input
               class="text-control"
               type="text"
@@ -60,10 +60,9 @@
               id="first"
               name="first name"
             />
-            <span id="firstNameError"></span>
           </div>
           <div>
-            <label for="last">Nom</label>
+            <div class="alignError"><label for="last">Nom</label><span id="lastNameError"></span></div>
             <input
               class="text-control"
               type="text"
@@ -72,10 +71,9 @@
               id="last"
               name="last name"
             />
-            <span id="lastNameError"></span>
           </div>
           <div>
-            <label for="email">Email</label>
+            <div class="alignError"><label for="email">Email</label><span id="emailError"></span></div>
             <input
               class="text-control"
               type="email"
@@ -84,10 +82,9 @@
               id="email"
               name="email"
             />
-            <span id="emailError"></span>
           </div>
           <div>
-            <label for="message">Votre message</label>
+            <div class="alignError"><label for="message">Votre message</label><span id="messageError"></span></div>
             <input
               class="text-control inputForm2"
               type="text"
@@ -96,7 +93,6 @@
               id="message"
               name="message"
             />
-            <span id="messageError"></span>
           </div>
           <button id="btn-submit" type="submit">Envoyer</button>
         </form>
