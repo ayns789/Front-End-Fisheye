@@ -61,7 +61,7 @@ function checkFirstName(e){
     errorFirstName.style.borderRadius = "0.5em 0.5em 0 0";
     errorFirstName.style.padding = "0 0.5em 0 0.5em";
     errorFirstName.style. border = "1px solid red";
-    errorFirstName.style.fontSize = "1.4em";
+    errorFirstName.style.fontSize = "1.3em";
     errorFirstName.style.fontWeight = "bold";
     errorFirstName.style.marginBottom = "-0.2em";
   } else if (!regexLetters.test(valFirstName)){ 
@@ -72,7 +72,7 @@ function checkFirstName(e){
       errorFirstName.style.marginBottom = "-0.2em";
       errorFirstName.style.padding = "0 0.5em 0 0.5em";
       errorFirstName.style. border = "1px solid red";
-      errorFirstName.style.fontSize = "1.4em";
+      errorFirstName.style.fontSize = "1.3em";
       errorFirstName.style.fontWeight = "bold";
     } else {
       errorFirstName.innerText = "";
@@ -109,7 +109,7 @@ function checkLastName(e){
     errorLastName.style.marginBottom = "-0.2em";
     errorLastName.style.padding = "0 0.5em 0 0.5em";
     errorLastName.style. border = "1px solid red";
-    errorLastName.style.fontSize = "1.4em";
+    errorLastName.style.fontSize = "1.3em";
     errorLastName.style.fontWeight = "bold";
     
   } else if (!regexLetters.test(valLastName)){ 
@@ -120,7 +120,7 @@ function checkLastName(e){
       errorLastName.style.marginBottom = "-0.2em";
       errorLastName.style.padding = "0 0.5em 0 0.5em";
       errorLastName.style. border = "1px solid red";
-      errorLastName.style.fontSize = "1.4em";
+      errorLastName.style.fontSize = "1.3em";
       errorLastName.style.fontWeight = "bold";
     } else {
       errorLastName.innerText = "";
@@ -160,7 +160,7 @@ function checkEmail(e){
       errorEmail.style.marginBottom = "-0.2em";
       errorEmail.style.padding = "0 0.5em 0 0.5em";
       errorEmail.style. border = "1px solid red";
-      errorEmail.style.fontSize = "1.4em";
+      errorEmail.style.fontSize = "1.3em";
       errorEmail.style.fontWeight = "bold";
       emailOk = false;
     }
@@ -193,7 +193,7 @@ function checkMessage(e){
     errorMessage.style.marginBottom = "-0.6em";
     errorMessage.style.padding = "0 0.5em 0 0.5em";
     errorMessage.style. border = "1px solid red";
-    errorMessage.style.fontSize = "1.1em";
+    errorMessage.style.fontSize = "1em";
     errorMessage.style.fontWeight = "bold";
     
   } else if (valMessage.length > 200 ){ 
@@ -204,7 +204,7 @@ function checkMessage(e){
     errorMessage.style.marginBottom = "-0.6em";
     errorMessage.style.padding = "0 0.5em 0 0.5em";
     errorMessage.style. border = "1px solid red";
-    errorMessage.style.fontSize = "1.1em";
+    errorMessage.style.fontSize = "1em";
     errorMessage.style.fontWeight = "bold";
     } else {
         errorMessage.innerText = "";

@@ -1,15 +1,4 @@
-.contact_button {
-    font-size: 1.25em;
-    font-weight: bold;
-    color: white;
-    padding: 0.68em;
-    width: 10.62em;
-    height: 4.37em;
-    border: none;
-    background-color: #901C1C;
-    border-radius: 0.31em;
-    cursor: pointer;
-}
+
 
 #contact_modal {
     display: none;
@@ -28,15 +17,6 @@
     from {opacity: 0;}
     to {opacity: 1;}
 }
-
-/* body { 
-    /* z-index: 3; */
-    
-    /* filter: grayscale(100%); */
-    /* background-color: rgba(255, 255, 255, 1); */
-    /* backdrop-filter: opacity(10%); */
-/* } */ 
-
 
 .modal {
     border-radius: 0.31em;
@@ -158,5 +138,6 @@ form input {
     border-radius: 0.31em;
     cursor: pointer;
 }
+
 
 

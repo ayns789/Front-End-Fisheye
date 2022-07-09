@@ -36,6 +36,7 @@ async function displayData( selectedWorksPhotograph ) {
     // récupération des classes html à travailler
     const photographersHeader = document.querySelector(".photograph-header");
     const photographiesSection = document.querySelector(".photographies-section");
+    const headerRight = document.querySelector(".center-block");
     // récupération des méthodes du design pattern factory 
     const photographerModel = photographerPageFactory();
     const userHeader = photographerModel.getUserHeader();
@@ -44,7 +45,7 @@ async function displayData( selectedWorksPhotograph ) {
     // injection des éléments créés dans les éléments html récupérés
 
     photographersHeader.appendChild(userHeader);
-    photographersHeader.appendChild(userPhotoHeader);
+    headerRight.appendChild(userPhotoHeader);
     photographersHeader.appendChild(userPrice);
 
     // itération pour sélectionner chaque photographie de la liste des photos

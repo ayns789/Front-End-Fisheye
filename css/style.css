@@ -6,6 +6,10 @@ body {
     font-family: "DM Sans", sans-serif;
     margin: 0;
     /* min-width: 1140px; */
+        /* box-sizing: border-box;
+      margin: auto;
+        block-size: 1080px; */
+    
 }
 a {
     text-decoration: none;
