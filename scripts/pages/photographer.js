@@ -36,7 +36,9 @@ async function displayData( selectedWorksPhotograph ) {
     // récupération des classes html à travailler
     const photographersHeader = document.querySelector(".photograph-header");
     const photographiesSection = document.querySelector(".photographies-section");
-    const headerRight = document.querySelector(".center-block");
+    // const centerB = document.querySelector(".center-block");
+    const rightB = document.querySelector(".rightB");
+    const leftB = document.querySelector(".leftB");
     // récupération des méthodes du design pattern factory 
     const photographerModel = photographerPageFactory();
     const userHeader = photographerModel.getUserHeader();
@@ -44,8 +46,8 @@ async function displayData( selectedWorksPhotograph ) {
     const userPrice = photographerModel.getUserPrice();
     // injection des éléments créés dans les éléments html récupérés
 
-    photographersHeader.appendChild(userHeader);
-    headerRight.appendChild(userPhotoHeader);
+    leftB.appendChild(userHeader);
+    rightB.appendChild(userPhotoHeader);
     photographersHeader.appendChild(userPrice);
 
     // itération pour sélectionner chaque photographie de la liste des photos
@@ -174,6 +176,47 @@ async function init() {
 
 init();
 
-/////////////////// LIGHTBOX ////////////////////
+/////////////////// RESIZE HEADER ////////////////////
 
+
+window.addEventListener("load", addClassToHeader);
+// window.addEventListener("resize", addClassToHeader);
+window.onresize = addClassToHeader;
+
+// fonction pour modifier la disposition du header
+function addClassToHeader (){
+
+    // on récupère la largeur de la fenêtre et les éléments que l'on va modifier
+    let width = window.innerWidth;
+    const centerBlock = document.querySelector(".center-block");
+    const rightB = document.querySelector(".rightB");
+    const centerB = document.querySelector(".centerB");
+    // on créée une div qui contiendra les éléments du header qui devront se superposer
+    const gaterbuttonPicture = document.createElement('div');
+    
+    if(width < 1150){
+        if (!centerBlock.classList.contains("stateFlexHeader")) {
+
+            // alert("size less than 1150px");
+            gaterbuttonPicture.className = "gaterbuttonPicture";
+            gaterbuttonPicture.appendChild(centerB);
+            gaterbuttonPicture.appendChild(rightB);
+            gaterbuttonPicture.setAttribute("id", "toRemove");
+            centerBlock.appendChild(gaterbuttonPicture);
+            centerBlock.classList.add("stateFlexHeader");
+
+        } 
+        
+    } else if (width >= 1150) {
+        if (centerBlock.classList.contains("stateFlexHeader")) {
+
+            centerBlock.classList.remove("stateFlexHeader");
+            centerBlock.appendChild(centerB);
+            centerBlock.appendChild(rightB);
+            document.getElementById("toRemove").remove();
+            
+        }
+        
+    }
+}
 

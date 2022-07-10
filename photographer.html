@@ -10,7 +10,7 @@
     <title>Fisheye - photographe</title>
   </head>
   <!-- <body onload="loadPagePhotographer()"> -->
-  <body">
+  <body>
     <header>
       <img src="assets/images/logo.png" class="logo" />
     </header>
@@ -18,7 +18,11 @@
     <main id="main">
       <div class="photograph-header">
         <div class="center-block">
-          <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
+          <div class="leftB"></div>
+          <div class="centerB">
+            <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
+          </div>
+          <div class="rightB"></div>
         </div>
       </div>
 
@@ -51,7 +55,9 @@
         </header>
         <form name="contactMe" action="photographer.html" method="get" id="form">
           <div>
-            <div class="alignError"><label for="first">Prénom</label><span id="firstNameError"></span></div>
+            <div class="alignError">
+              <label for="first">Prénom</label><span id="firstNameError"></span>
+            </div>
             <input
               class="text-control"
               type="text"
@@ -62,7 +68,9 @@
             />
           </div>
           <div>
-            <div class="alignError"><label for="last">Nom</label><span id="lastNameError"></span></div>
+            <div class="alignError">
+              <label for="last">Nom</label><span id="lastNameError"></span>
+            </div>
             <input
               class="text-control"
               type="text"
@@ -73,7 +81,9 @@
             />
           </div>
           <div>
-            <div class="alignError"><label for="email">Email</label><span id="emailError"></span></div>
+            <div class="alignError">
+              <label for="email">Email</label><span id="emailError"></span>
+            </div>
             <input
               class="text-control"
               type="email"
@@ -84,7 +94,9 @@
             />
           </div>
           <div>
-            <div class="alignError"><label for="message">Votre message</label><span id="messageError"></span></div>
+            <div class="alignError">
+              <label for="message">Votre message</label><span id="messageError"></span>
+            </div>
             <input
               class="text-control inputForm2"
               type="text"

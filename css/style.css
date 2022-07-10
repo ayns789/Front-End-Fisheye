@@ -90,3 +90,9 @@ footer {
         font-size: 1.8em;
     }
   }
+
+  @media screen and (max-width: 900px){
+    .photographer_section {
+        grid-template-columns: 1fr 1fr;
+    }
+  }
