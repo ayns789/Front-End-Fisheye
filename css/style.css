@@ -5,11 +5,6 @@
 body {
     font-family: "DM Sans", sans-serif;
     margin: 0;
-    /* min-width: 1140px; */
-        /* box-sizing: border-box;
-      margin: auto;
-        block-size: 1080px; */
-    
 }
 a {
     text-decoration: none;
@@ -63,6 +58,11 @@ h1 {
 
 .photographer_section article img {
     object-fit: cover;
+    /* background-position: center; */
+    background-size: auto;
+    /* background-repeat: no-repeat; */
+    /* object-fit: fill; */
+    /* object-position:50% 50%; */
     width: 12.5em;
     height: 12.5em;
     border-radius: 50%;

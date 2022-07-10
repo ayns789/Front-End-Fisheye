@@ -11,49 +11,63 @@
   </head>
   <!-- <body onload="loadPagePhotographer()"> -->
   <body>
-    <header>
-      <img src="assets/images/logo.png" class="logo" />
+    <header role="banner">
+      <a href="index.html" role="image link" alt="Fisheye Home page"
+        ><img src="assets/images/logo.png" class="logo"
+      /></a>
     </header>
 
-    <main id="main">
+    <main id="main" role="main">
       <div class="photograph-header">
         <div class="center-block">
           <div class="leftB"></div>
           <div class="centerB">
-            <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
+            <button class="contact_button" aria-labelledby="contact me" onclick="displayModal()">
+              Contactez-moi
+            </button>
           </div>
           <div class="rightB"></div>
         </div>
       </div>
 
       <div class="dropdownBlockDrop">
-        <div class="sectionDrop">
+        <div class="sectionDrop" role="region">
           <span class="textTrier">Trier par </span>
           <div class="dropdown1">
-            <div class="selectBtnDrop">
+            <button
+              class="selectBtnDrop"
+              aria-haspopup="true"
+              aria-expanded="false"
+              aria-labelledby="Order by"
+              aria-controls="menuDrop"
+            >
               <span class="selectedDrop">Popularité</span>
               <div class="caretDrop"></div>
-            </div>
-            <ul class="menuDrop">
-              <li class="activeDrop">Date</li>
-              <li>Titre</li>
+            </button>
+            <ul class="menuDrop" role="menu">
+              <li class="activeDrop" role="menuitem">Date</li>
+              <li role="menuitem">Titre</li>
             </ul>
           </div>
         </div>
       </div>
 
-      <div class="photographies-section"></div>
+      <div class="photographies-section" role="region"></div>
     </main>
-    <div id="contact_modal">
+    <div id="contact_modal" role="Dialog">
       <div class="modal">
-        <header class="modalH">
+        <header class="modalH" role="banner">
           <div class="titleNameAlign">
             <h2 class="titleH">Contactez moi</h2>
             <h2 id="titlePhotograph"></h2>
           </div>
-          <img src="assets/icons/close.svg" onclick="closeModal()" />
+          <img
+            src="assets/icons/close.svg"
+            aria-label="Close Contact form"
+            onclick="closeModal()"
+          />
         </header>
-        <form name="contactMe" action="photographer.html" method="get" id="form">
+        <form name="contactMe" role="form" action="photographer.html" method="get" id="form">
           <div>
             <div class="alignError">
               <label for="first">Prénom</label><span id="firstNameError"></span>
@@ -62,7 +76,7 @@
               class="text-control"
               type="text"
               aria-required="true"
-              aria-label="prénom"
+              aria-labelledby="First name"
               id="first"
               name="first name"
             />
@@ -75,7 +89,7 @@
               class="text-control"
               type="text"
               aria-required="true"
-              aria-label="nom"
+              aria-labelledby="Last name"
               id="last"
               name="last name"
             />
@@ -88,7 +102,7 @@
               class="text-control"
               type="email"
               aria-required="true"
-              aria-label="email"
+              aria-labelledby="email"
               id="email"
               name="email"
             />
@@ -101,17 +115,17 @@
               class="text-control inputForm2"
               type="text"
               aria-required="true"
-              aria-label="message"
+              aria-labelledby="Your message"
               id="message"
               name="message"
             />
           </div>
-          <button id="btn-submit" type="submit">Envoyer</button>
+          <button id="btn-submit" type="submit" aria-labelledby="Send">Envoyer</button>
         </form>
       </div>
     </div>
 
-    <div class="lightbox">
+    <div class="lightbox" role="Dialog">
       <span
         class="fas fa-chevron-left lightbox__prev"
         role="link"

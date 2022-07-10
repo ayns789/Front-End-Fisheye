@@ -55,7 +55,8 @@ export function photographerPageFactory( ) {
 
           setAttributes(img, {
               "src": picture, 
-              "aria-label": "une photo de profil du photographe"
+              "aria-label": "une photo de profil du photographe",
+              "alt": objPhotographer._name
             });
 
         // affectation des éléments dans l'élément html img créée
@@ -164,20 +165,28 @@ export function photographerPageFactory( ) {
           if(objPhotographieVideo.video){
             setAttributes(source, {
               "src": movie, 
-              "type": "video/mp4",
-              "aria-label": "le nom de la video est " + movie
+              "type": "video/mp4"
             });
             setAttributes(video, {
               "controls": "controls",
-              "loop": "true"
+              "loop": "true",
+              "aria-label": "le nom de la video est " + movie
             });
   
             h2.textContent = objPhotographieVideo.title;
             h2.setAttribute("aria-label", "le titre de la video est " + objPhotographieVideo.title);
             likes.textContent = objPhotographieVideo.likes;
-            likes.setAttribute("aria-label", "le nombre de 'likes' est " + objPhotographieVideo.likes);
+            setAttributes(likes, {
+              "aria-label": "le nombre de 'likes' est " + objPhotographieVideo.likes,
+              "alt": objPhotographieVideo.likes + " coeurs"
+            });
             video.appendChild(source);
             a.setAttribute('href', movie);
+            setAttributes(a, {
+              "href": movie,
+              "role": "image link",
+              "aria-labelledby": objPhotographieVideo.title + ", closeup view"
+            });
             a.appendChild(video);
             article.appendChild(a);
             
@@ -191,7 +200,11 @@ export function photographerPageFactory( ) {
             h2.textContent = objPhotographie.title;
             h2.setAttribute("aria-label", "le titre de la photo est " + objPhotographie.title);
             likes.textContent = objPhotographie.likes;
-            likes.setAttribute("aria-label", "le nombre de 'likes' est " + objPhotographie.likes);
+            // likes.setAttribute("aria-label", "le nombre de 'likes' est " + objPhotographie.likes);
+            setAttributes(likes, {
+              "aria-label": "le nombre de 'likes' est " + objPhotographie.likes,
+              "alt": objPhotographie.likes + " coeurs"
+            });
             a.setAttribute('href', picture);
             a.appendChild(img)
             article.appendChild(a);

@@ -67,7 +67,7 @@ function loadLightbox(){
 
     // fonction qui va gérer l'affichage des médias de la lightbox
     function displayLightbox(currentMedia) {
-        console.log(currentMedia)
+        // console.log(currentMedia)
         // remplira le contenu lightbox avec le média à afficher et son titre
         lightboxContainer.innerHTML = mediaLightbox(currentMedia);
         // currentMedia = {};
@@ -138,25 +138,42 @@ function loadLightbox(){
         lightbox.style.display = 'none';
     });
 
-
     // navigation au clavier, fleches gauche et droite, touche échap pour sortir
-    window.addEventListener('keydown', function (e) {
-        if (e.target.key == 'lightboxBtnNext') {
-            displayBtnNext();
-        }
-        if (e.target.key == 'lightboxBtnPrev') {
+    document.onkeydown = function (event) {
+        // console.log(event.code);
+        switch (event.code) {
+        case 'ArrowLeft':
             displayBtnPrev();
+            //   console.log("Left key is pressed.");
+            break;
+        case 'ArrowRight':
+            displayBtnNext();
+            //   console.log("Right key is pressed.");
+            break;
+        case 'Escape':
+            lightbox.style.display = 'none';
+            break;
         }
-        if (e.target.key == 'Escape') {
-            lightboxContainer.style.display = 'none';
-        }
-    })
+        // switch (event.keyCode) {
+        // case 37:
+        //     displayBtnPrev();
+        //     //   console.log("Left key is pressed.");
+        //     break;
+        // case 39:
+        //     displayBtnNext();
+        //     //   console.log("Right key is pressed.");
+        //     break;
+        // case 27:
+        //     lightbox.style.display = 'none';
+        //     break;
+        // }
+    };
+
+    
    
 }
 
 loadLightbox();
-
-
 
 
 

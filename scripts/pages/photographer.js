@@ -104,6 +104,8 @@ function btnDropdownFilter(selectedWorksPhotograph){
             caret.classList.toggle('caretDrop-rotate');
             // ajout d'une classe de style pour le menu déroulant ouvert
             menu.classList.toggle('menuDrop-open');
+            // on change l'état de la aria-expended 
+            select.ariaExpanded = "true";
         })
     
         // si le menu dropdown est ouvert et qu'on clique ailleurs, il se ferme et le caret du bouton reprend sa position 
@@ -113,6 +115,8 @@ function btnDropdownFilter(selectedWorksPhotograph){
                     menu.classList.remove('menuDrop-open');
                     caret.classList.remove('caretDrop-rotate');
                     select.classList.remove('selectBtnDrop-clicked');
+                    // on change l'état de la aria-expended 
+                    select.ariaExpanded = "false";
                 };
         });
 

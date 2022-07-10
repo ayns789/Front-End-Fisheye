@@ -55,7 +55,7 @@ function checkFirstName(e){
 
   if( valFirstName.length < 2 ){
     errorFirstName.innerText = "Vous devez saisir au moins 2 caractères";
-    // errorFirstName.style.color = "#0000E0";
+    errorFirstName.setAttribute("alt", "Vous devez saisir au moins 2 caractères"); 
     errorFirstName.style.color = "red";
     errorFirstName.style.backgroundColor = "white";
     errorFirstName.style.borderRadius = "0.5em 0.5em 0 0";
@@ -66,6 +66,7 @@ function checkFirstName(e){
     errorFirstName.style.marginBottom = "-0.2em";
   } else if (!regexLetters.test(valFirstName)){ 
       errorFirstName.innerText = "Vous devez saisir uniquement des lettres";
+      errorFirstName.setAttribute("alt", "Vous devez saisir uniquement des lettres"); 
       errorFirstName.style.color = "red";
       errorFirstName.style.backgroundColor = "white";
       errorFirstName.style.borderRadius = "0.5em 0.5em 0 0";
@@ -103,6 +104,7 @@ function checkLastName(e){
 
   if( valLastName.length < 2 ){
     errorLastName.innerText = "Vous devez saisir au moins 2 caractères";
+    errorLastName.setAttribute("alt", "Vous devez saisir au moins 2 caractères"); 
     errorLastName.style.color = "red";
     errorLastName.style.backgroundColor = "white";
     errorLastName.style.borderRadius = "0.5em 0.5em 0 0";
@@ -114,6 +116,7 @@ function checkLastName(e){
     
   } else if (!regexLetters.test(valLastName)){ 
       errorLastName.innerText = "Vous devez saisir uniquement des lettres";
+      errorLastName.setAttribute("alt", "Vous devez saisir uniquement des lettres");
       errorLastName.style.color = "red";
       errorLastName.style.backgroundColor = "white";
       errorLastName.style.borderRadius = "0.5em 0.5em 0 0";
@@ -154,6 +157,7 @@ function checkEmail(e){
       return valEmail;
     } else {
       errorEmail.innerText = "Vous devez saisir une adresse email valide";
+      errorEmail.setAttribute("alt", "Vous devez saisir une adresse email valide");
       errorEmail.style.color = "red";
       errorEmail.style.backgroundColor = "white";
       errorEmail.style.borderRadius = "0.5em 0.5em 0 0";
@@ -187,6 +191,7 @@ function checkMessage(e){
 
   if( valMessage.length < 20 ){
     errorMessage.innerText = "Vous devez saisir au moins 20 caractères";
+    errorMessage.setAttribute("alt", "Vous devez saisir au moins 20 caractères");
     errorMessage.style.color = "red";
     errorMessage.style.backgroundColor = "white";
     errorMessage.style.borderRadius = "0.5em 0.5em 0 0";
@@ -198,6 +203,7 @@ function checkMessage(e){
     
   } else if (valMessage.length > 200 ){ 
     errorMessage.innerText = "Votre message est trop grand, 200caractères maximum";
+    errorMessage.setAttribute("alt", "Votre message est trop grand, 200caractères maximum");
     errorMessage.style.color = "red";
     errorMessage.style.backgroundColor = "white";
     errorMessage.style.borderRadius = "0.5em 0.5em 0 0";

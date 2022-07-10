@@ -13,11 +13,6 @@
     animation: lightboxIn 0.5s;
 }
 
-@keyframes lightboxIn {
-    from {opacity: 0;}
-    to {opacity: 1;}
-}
-
 .modal {
     border-radius: 0.31em;
     background-color: #DB8876;
@@ -54,6 +49,9 @@
     margin-top: -0.5em;
     width: 2.2em;
 }
+.modal header img:hover {
+    filter: brightness(0) saturate(100%) invert(18%) sepia(36%) saturate(4921%) hue-rotate(348deg) brightness(87%) contrast(91%);
+}
 
 .modal header h2 {
     font-size: 3.3em;
@@ -61,9 +59,6 @@
     text-align: center;
     margin-top: 0;
     padding-top: 0;
-    /* margin-left: 0; */
-    /* padding-left: 0.3em; */
-    /* margin-left: -0.3em; */
 }
 .titleNameAlign {
     display: flex;
@@ -137,6 +132,15 @@ form input {
     background-color: #901C1C;
     border-radius: 0.31em;
     cursor: pointer;
+}
+
+#btn-submit:hover {
+    filter: brightness(120%);
+}
+
+@keyframes lightboxIn {
+    from {opacity: 0;}
+    to {opacity: 1;}
 }
 
 
