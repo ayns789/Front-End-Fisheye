@@ -88,8 +88,10 @@ export function photographerPageFactory( ) {
         // affectation de classes et de valeurs aux éléments
         div3.className = "price-fixed";
         sumL.className = "totaLike";
+        sumL.setAttribute("alt", sumLikes + " coeurs au total pour ce photographe")
         sumL.textContent = sumLikes + " ";
         p3.textContent = objPhotographer._price + "€ / jour";
+        p3.setAttribute("alt", "tarif par jour : " + objPhotographer._price + " euros");
         heart.className = "fa-solid fa-heart";
 
         // affectation des éléments dans l'élément html div créée

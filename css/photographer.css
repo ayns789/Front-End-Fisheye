@@ -14,7 +14,6 @@ body, main {
 .photograph-header .right-block {
     display: flex;
     justify-content: center;
-    align-items: right;
 }
 .photograph-header .right-block img {
     object-fit: cover;

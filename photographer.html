@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <link href="css/style.css" rel="stylesheet" type="text/css" />
     <!-- <link href="css/lightbox.css" rel="stylesheet" type="text/css" /> -->
@@ -12,8 +12,8 @@
   <!-- <body onload="loadPagePhotographer()"> -->
   <body>
     <header role="banner">
-      <a href="index.html" role="image link" alt="Fisheye Home page"
-        ><img src="assets/images/logo.png" class="logo"
+      <a href="index.html" role="link" aria-label="Fisheye Home page"
+        ><img src="assets/images/logo.png" class="logo" alt="Fisheye Home page"
       /></a>
     </header>
 
@@ -22,7 +22,7 @@
         <div class="center-block">
           <div class="leftB"></div>
           <div class="centerB">
-            <button class="contact_button" aria-labelledby="contact me" onclick="displayModal()">
+            <button class="contact_button" aria-label="contact me" onclick="displayModal()">
               Contactez-moi
             </button>
           </div>
@@ -38,11 +38,10 @@
               class="selectBtnDrop"
               aria-haspopup="true"
               aria-expanded="false"
-              aria-labelledby="Order by"
-              aria-controls="menuDrop"
+              aria-label="Order by"
             >
               <span class="selectedDrop">Popularité</span>
-              <div class="caretDrop"></div>
+              <span class="caretDrop"></span>
             </button>
             <ul class="menuDrop" role="menu">
               <li class="activeDrop" role="menuitem">Date</li>
@@ -54,7 +53,7 @@
 
       <div class="photographies-section" role="region"></div>
     </main>
-    <div id="contact_modal" role="Dialog">
+    <div id="contact_modal">
       <div class="modal">
         <header class="modalH" role="banner">
           <div class="titleNameAlign">
@@ -65,6 +64,7 @@
             src="assets/icons/close.svg"
             aria-label="Close Contact form"
             onclick="closeModal()"
+            alt="Close Contact form"
           />
         </header>
         <form name="contactMe" role="form" action="photographer.html" method="get" id="form">
@@ -76,7 +76,7 @@
               class="text-control"
               type="text"
               aria-required="true"
-              aria-labelledby="First name"
+              aria-label="First name"
               id="first"
               name="first name"
             />
@@ -89,7 +89,7 @@
               class="text-control"
               type="text"
               aria-required="true"
-              aria-labelledby="Last name"
+              aria-label="Last name"
               id="last"
               name="last name"
             />
@@ -102,7 +102,7 @@
               class="text-control"
               type="email"
               aria-required="true"
-              aria-labelledby="email"
+              aria-label="email"
               id="email"
               name="email"
             />
@@ -115,29 +115,30 @@
               class="text-control inputForm2"
               type="text"
               aria-required="true"
-              aria-labelledby="Your message"
+              aria-label="Your message"
               id="message"
               name="message"
             />
           </div>
-          <button id="btn-submit" type="submit" aria-labelledby="Send">Envoyer</button>
+          <button id="btn-submit" type="submit" aria-label="Send">Envoyer</button>
         </form>
       </div>
     </div>
 
-    <div class="lightbox" role="Dialog">
+    <div class="lightbox">
       <span
         class="fas fa-chevron-left lightbox__prev"
         role="link"
         aria-label="image précédente"
       ></span>
-      <div class="lightbox__container"><img src="" alt="" /></div>
-      <span class="fas fa-times close_bigger lightbox__close" aria-label="Close dialog"></span>
-      <span
-        class="fas fa-chevron-right lightbox__next"
-        role="link"
-        aria-label="image suivante"
-      ></span>
+      <div class="lightbox__container">
+        <span class="fas fa-times close_bigger lightbox__close" aria-label="Close dialog"></span>
+        <span
+          class="fas fa-chevron-right lightbox__next"
+          role="link"
+          aria-label="image suivante"
+        ></span>
+      </div>
     </div>
 
     <script src="/scripts/utils/contactForm.js"></script>
