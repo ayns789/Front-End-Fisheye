@@ -55,11 +55,9 @@
     cursor: pointer;
 }
 
-
-
-.lightbox__close:hover {
+/* .lightbox__close:hover {
     filter: brightness(150%);
-}
+} */
 
 .lightbox__container {
     display: flex;

@@ -6,7 +6,7 @@
   "name": "front_end_fisheye",
   "description": "Rien à installer ici, il suffit d'ouvrir le fichier `index.html`.",
   "version": "1.0.0",
-  "main": "index.html",
+  "main": "index.js",
   "devDependencies": {
     "eslint": "^8.18.0",
     "eslint-config-prettier": "^8.5.0",
