@@ -276,6 +276,7 @@ init();
 
 // avec la navigation clavier, on change couleur du bouton contactez moi qui appelle la modale
 const contactBtn = document.querySelector(".contact_button");
+
 if(mainHidden.ariaHidden == "false") {
 contactBtn.addEventListener('focus', () => {
     contactBtn.style.background = "#DB8876";

@@ -61,7 +61,7 @@
     </main>
 
     <div id="contact_modal" role="dialog" aria-hidden="true">
-      <div class="modal" role="group" aria-labelledby="form">
+      <div class="modal">
         <header class="modalH" role="banner">
           <div class="titleNameAlign" id="joinForm">
             <h2 class="titleH">Contactez moi</h2>
@@ -74,60 +74,59 @@
             alt="Close Contact form"
           />
         </header>
-        <form name="contactMe" role="form" action="photographer.html" method="get" id="form">
-          <div>
-            <div class="alignError">
-              <label id="idPrenom" for="first">Prénom</label><span id="firstNameError"></span>
-            </div>
-            <input
-              class="text-control"
-              type="text"
-              aria-required="true"
-              aria-labelledby="idPrenom"
-              id="first"
-              name="first name"
-            />
+        <form action="photographer.html" method="get" id="form" aria-label="Contact me" novalidate>
+          <!-- <div> -->
+          <div class="alignError">
+            <label id="idPrenom" for="first">Prénom</label><span id="firstNameError"></span>
           </div>
-          <div>
-            <div class="alignError">
-              <label id="idNom" for="last">Nom</label><span id="lastNameError"></span>
-            </div>
-            <input
-              class="text-control"
-              type="text"
-              aria-required="true"
-              aria-labelledby="idNom"
-              id="last"
-              name="last name"
-            />
+          <input
+            class="text-control"
+            type="text"
+            aria-required="true"
+            aria-labelledby="idPrenom"
+            id="first"
+            name="first name"
+          />
+          <!-- </div> -->
+          <!-- <div> -->
+          <div class="alignError">
+            <label id="idNom" for="last">Nom</label><span id="lastNameError"></span>
           </div>
-          <div>
-            <div class="alignError">
-              <label id="idEmail" for="email">Email</label><span id="emailError"></span>
-            </div>
-            <input
-              class="text-control"
-              type="email"
-              aria-required="true"
-              aria-labelledby="idEmail"
-              id="email"
-              name="email"
-            />
+          <input
+            class="text-control"
+            type="text"
+            aria-required="true"
+            aria-labelledby="idNom"
+            id="last"
+            name="last name"
+          />
+          <!-- </div> -->
+          <!-- <div> -->
+          <div class="alignError">
+            <label id="idEmail" for="email">Email</label><span id="emailError"></span>
           </div>
-          <div>
-            <div class="alignError">
-              <label id="idMessage" for="message">Votre message</label
-              ><span id="messageError"></span>
-            </div>
-            <input
-              class="text-control inputForm2"
-              type="text"
-              aria-required="true"
-              aria-labelledby="idMessage"
-              id="message"
-              name="message"
-            />
+          <input
+            class="text-control"
+            type="email"
+            aria-required="true"
+            aria-labelledby="idEmail"
+            id="email"
+            name="email"
+          />
+          <!-- </div> -->
+          <!-- <div> -->
+          <div class="alignError">
+            <label id="idMessage" for="message">Votre message</label><span id="messageError"></span>
           </div>
+          <input
+            class="text-control inputForm2"
+            type="text"
+            aria-required="true"
+            aria-labelledby="idMessage"
+            id="message"
+            name="message"
+          />
+          <!-- </div> -->
           <button id="btn-submit" type="submit" aria-label="Send">Envoyer</button>
         </form>
       </div>
