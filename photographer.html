@@ -16,7 +16,7 @@
         ><img src="assets/images/logo.png" class="logo" alt="Fisheye Home page"
       /></a>
     </header>
-
+    <!-- aria-hidden="false" -->
     <main id="main" role="main">
       <div class="photograph-header">
         <div class="center-block">
@@ -32,31 +32,37 @@
 
       <div class="dropdownBlockDrop">
         <div class="sectionDrop" role="region">
-          <span class="textTrier">Trier par </span>
+          <span class="textTrier" aria-label="Order by">Trier par </span>
           <div class="dropdown1">
             <button
               class="selectBtnDrop"
+              id="idSelectBtnDrop"
+              type="button"
               aria-haspopup="true"
               aria-expanded="false"
-              aria-label="Order by"
             >
               <span class="selectedDrop">Popularité</span>
               <span class="caretDrop"></span>
             </button>
-            <ul class="menuDrop" role="menu">
-              <li class="activeDrop" role="menuitem">Date</li>
-              <li role="menuitem">Titre</li>
-            </ul>
+            <div
+              class="menuDrop"
+              role="menu"
+              aria-haspopup="true"
+              aria-labelledby="idSelectBtnDrop"
+            >
+              <a role="menu-item" href="#" class="activeDrop designList">Date</a>
+              <a role="menu-item" href="#" class="designList">Titre</a>
+            </div>
           </div>
         </div>
       </div>
 
       <div class="photographies-section" role="region"></div>
     </main>
-    <div id="contact_modal">
+    <div id="contact_modal" role="group" aria-labelledby="joinForm">
       <div class="modal">
         <header class="modalH" role="banner">
-          <div class="titleNameAlign">
+          <div class="titleNameAlign" id="joinForm">
             <h2 class="titleH">Contactez moi</h2>
             <h2 id="titlePhotograph"></h2>
           </div>
@@ -70,52 +76,53 @@
         <form name="contactMe" role="form" action="photographer.html" method="get" id="form">
           <div>
             <div class="alignError">
-              <label for="first">Prénom</label><span id="firstNameError"></span>
+              <label id="idPrenom" for="first">Prénom</label><span id="firstNameError"></span>
             </div>
             <input
               class="text-control"
               type="text"
               aria-required="true"
-              aria-label="First name"
+              aria-labelledby="idPrenom"
               id="first"
               name="first name"
             />
           </div>
           <div>
             <div class="alignError">
-              <label for="last">Nom</label><span id="lastNameError"></span>
+              <label id="idNom" for="last">Nom</label><span id="lastNameError"></span>
             </div>
             <input
               class="text-control"
               type="text"
               aria-required="true"
-              aria-label="Last name"
+              aria-labelledby="idNom"
               id="last"
               name="last name"
             />
           </div>
           <div>
             <div class="alignError">
-              <label for="email">Email</label><span id="emailError"></span>
+              <label id="idEmail" for="email">Email</label><span id="emailError"></span>
             </div>
             <input
               class="text-control"
               type="email"
               aria-required="true"
-              aria-label="email"
+              aria-labelledby="idEmail"
               id="email"
               name="email"
             />
           </div>
           <div>
             <div class="alignError">
-              <label for="message">Votre message</label><span id="messageError"></span>
+              <label id="idMessage" for="message">Votre message</label
+              ><span id="messageError"></span>
             </div>
             <input
               class="text-control inputForm2"
               type="text"
               aria-required="true"
-              aria-label="Your message"
+              aria-labelledby="idMessage"
               id="message"
               name="message"
             />
@@ -125,7 +132,7 @@
       </div>
     </div>
 
-    <div class="lightbox">
+    <div class="lightbox" role="dialog">
       <span
         class="fas fa-chevron-left lightbox__prev"
         role="link"

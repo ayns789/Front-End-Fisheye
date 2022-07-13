@@ -148,6 +148,17 @@ export function photographerPageFactory( ) {
           const h2 = document.createElement( 'h2' );
           const likes = document.createElement( 'p' );
           const heart = document.createElement( 'i' );
+          const contentBtnHeart = document.createElement("button");
+          
+            // margin: 0;
+            // padding: 0;
+            // line-height: 100%; /* Si ça fonctionne pas mets 0 */
+            // border: 0;
+            // background: none; /* ou transparent je sais plus... */
+            // font: /* Définis le même font qu'un lien traditionnel */;
+            // color: /* La même couleur... */;
+            // text-decoration: underline; /* Normalement */
+        
 
           // fonction pour fournir plusieurs attributs à un élément
           function setAttributes(el, attrs) {
@@ -155,13 +166,20 @@ export function photographerPageFactory( ) {
               el.setAttribute(key, attrs[key]);
             }
           }
+          contentBtnHeart.className = "btnHeart";
+          
+          
 
           // affectation de classes et de valeurs aux éléments
           h2likes.className = "block-photographies";
           heart.className = "fa-solid fa-heart";
           img.className = "media";
           video.className = "media";
-          
+
+          setAttributes(heart, {
+            "aria-label": "click to add one heart",
+            "role": "button"
+          });
 
           // dissocier les photos et vidéos pour certaines affectations 
           if(objPhotographieVideo.video){
@@ -214,13 +232,27 @@ export function photographerPageFactory( ) {
           }
         
           // affectation des éléments dans l'élément html article créé
+          contentBtnHeart.appendChild(heart);
           h2likes.appendChild(h2);
           h2likes.appendChild(likes);
-          h2likes.appendChild(heart);
+          h2likes.appendChild(contentBtnHeart);
+          
+          // h2likes.appendChild(heart);
           article.appendChild(h2likes);
 
           // fonction pour incrémenter / décrémenter des likes aux médias, et mettre à jour le local storage
-          heart.onclick = function() {
+          // heart.onclick = function() {
+            heart.addEventListener("click", gestureHearts);
+
+            contentBtnHeart.addEventListener("keypress", (e) => {
+              if(e.code == "Enter"){
+                gestureHearts();
+              } 
+            });
+
+
+
+            function gestureHearts(){
             // je récupère la liste des photographies concernée
             let selectedPhotographies = JSON.parse(localStorage.getItem("selectedWorksPhotograph"));
             // je récupère l'objet concerné, par son id
@@ -247,7 +279,7 @@ export function photographerPageFactory( ) {
               const userPrice = photographerModel.getUserPrice();
               photographersHeader.appendChild(userPrice);
 
-              loadLightbox();
+              // loadLightbox();                      
 
           }
           

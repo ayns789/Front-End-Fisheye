@@ -91,11 +91,30 @@ function btnDropdownFilter(selectedWorksPhotograph){
         const select = dropdown.querySelector(".selectBtnDrop");
         const caret = dropdown.querySelector(".caretDrop");
         const menu = dropdown.querySelector(".menuDrop");
-        const options = dropdown.querySelectorAll(".menuDrop li");
+        const options = dropdown.querySelectorAll(".menuDrop a");
         const selected = dropdown.querySelector(".selectedDrop");
         // const dropdown1 = dropdown.querySelector(".sectionDrop");
     
-    
+
+        // fonction pour ouvrir le dropdown             
+        function addMenuDrop(){
+            select.classList.add('selectBtnDrop-clicked');
+            // ajout classe pour rotation de la flèche du bouton dropdown
+            caret.classList.add('caretDrop-rotate');
+            // ajout d'une classe de style pour le menu déroulant ouvert
+            menu.classList.add('menuDrop-open');
+            // on change l'état de la aria-expended 
+            select.ariaExpanded = "true";
+        }
+        
+        // fonction pour fermer le dropdown
+        function initializDropdown() {
+            menu.classList.remove('menuDrop-open');
+            caret.classList.remove('caretDrop-rotate');
+            select.classList.remove('selectBtnDrop-clicked');
+            select.ariaExpanded = "false";
+        }
+
         // ajout d'un event au click sur le bouton du dropdown
         select.addEventListener('click', () => {
             // ajout d'une classe de style pour des effets sur le bouton dropdown
@@ -107,18 +126,49 @@ function btnDropdownFilter(selectedWorksPhotograph){
             // on change l'état de la aria-expended 
             select.ariaExpanded = "true";
         })
+
+        select.addEventListener('focus', () => {
+            select.style.background = "#DB8876";
+            select.addEventListener('focusout', () => {
+                select.style.background = "#901C1C";
+            })
+        })
+        
     
         // si le menu dropdown est ouvert et qu'on clique ailleurs, il se ferme et le caret du bouton reprend sa position 
         document.addEventListener("mouseup", (event) => {
                 if(menu.classList.contains('menuDrop-open') && !event.target.classList.contains('selectBtnDrop')){
                 // if(!event.target.classList.contains('selectBtnDrop')){
-                    menu.classList.remove('menuDrop-open');
-                    caret.classList.remove('caretDrop-rotate');
-                    select.classList.remove('selectBtnDrop-clicked');
-                    // on change l'état de la aria-expended 
-                    select.ariaExpanded = "false";
-                };
+                    initializDropdown();
+                };  
         });
+        
+        // on écoute le menu, si le keyboard arrive dessus, on l'ouvre, si on en sort, on le referme
+                options.forEach(option =>{
+                    // ajout d'un event au click du clavier sur une option du menu sélectionnée
+                    option.addEventListener('keydown', (e) => {
+                        addMenuDrop();
+                        if (e.code == "Enter") {
+                            initializDropdown();
+                        }
+                        option.addEventListener('focusout', () => {
+                            initializDropdown();
+                            option.style.background = "#901C1C";
+                        })
+                        option.addEventListener('focusin', () => {
+                            addMenuDrop();
+                        })
+                    })
+
+                    option.addEventListener('focus', (e) => {
+                        addMenuDrop(); 
+                        option.style.background = "#DB8876";
+                        option.style.width = "11em";
+                    })
+                    
+                })
+                
+        
 
         function filtersGesture(){
         // création d'un tableau vide à objectif de prendre la valeur du filtre sélectionné
@@ -136,14 +186,17 @@ function btnDropdownFilter(selectedWorksPhotograph){
                     resultFilters = selectedWorksPhotograph.sort((a, b) => (a.likes > b.likes ? 1 : -1));
                     options[0].innerText = 'Date';
                     options[1].innerText = 'Titre';
+                    // select.ariaExpanded = "false";
                 } else if (selected.innerText == 'Date') {
                     resultFilters = selectedWorksPhotograph.sort((a, b) => (a.date > b.date ? 1 : -1));
                     options[0].innerText = 'Popularité';
                     options[1].innerText = 'Titre';
+                    // select.ariaExpanded = "false";
                 } else if (selected.innerText == 'Titre') {
                     resultFilters = selectedWorksPhotograph.sort((a, b) => (a.title > b.title ? 1 : -1));
                     options[0].innerText = 'Popularité';
                     options[1].innerText = 'Date';
+                    // select.ariaExpanded = "false";
                 }
 
                 // on inscrit la liste filtrée dans le storage pour la lightbox
@@ -179,6 +232,20 @@ async function init() {
 };
 
 init();
+
+
+// avec la navigation clavier, on change couleur du bouton contactez moi qui appelle la modale
+const contactBtn = document.querySelector(".contact_button");
+
+contactBtn.addEventListener('focus', () => {
+    contactBtn.style.background = "#DB8876";
+    contactBtn.addEventListener('focusout', () => {
+        contactBtn.style.background = "#901C1C";
+    })
+})
+
+
+// selectedWorksPhotograph.media.onkeydown = loadLightbox();
 
 /////////////////// RESIZE HEADER ////////////////////
 
@@ -222,5 +289,6 @@ function addClassToHeader (){
         }
         
     }
-}
+}   
 
+////////////////////////////////////////

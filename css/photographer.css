@@ -135,6 +135,9 @@ body, main {
 .selectBtnDrop:hover {
     background: #DB8876;
 }
+/* .selectBtnDrop:focus {
+    background: #901C1C;
+} */
 
 .caretDrop {
     width: 12px;
@@ -150,8 +153,11 @@ body, main {
 }
 
 .menuDrop {
+    display: flex;
+    flex-direction: column;
     width: 10.62em;
     margin: 2.5em 0.5em 0 0;
+    height: 8.80em;
     list-style: none;
     font-size: 1.12em;
     font-weight: 700;
@@ -167,20 +173,31 @@ body, main {
     transition: 0.5s;
 }
 
-.menuDrop li {
-    padding: 1.5em 0.5em 1.5em 0.5em;
-    margin: 0;
+.menuDrop a {
+    /* padding: 1.5em 1.5em 5em 1.5em; */
+    padding: 1.5em 0em 1em 0.5em;
+margin-left: -0.5em;
+    /* margin: 1em 1em 1em 1em; */
     border-top: 1px solid white;
     cursor: pointer;
-    width: 91%;
+    width: 11.62em;
+    height: 4.80em;
+    /* height: 4.80em; */
+    color: white;
+    text-decoration: none;
 }
-.menuDrop li:hover {
+.menuDrop .designList:hover {
     background: #DB8876;
     width: 96%;
     height: 100%;
     padding: 1.5em 0em 1.5em 0.5em;
     cursor: pointer;
 }
+
+/* .menuDrop a {
+    color: white;
+    text-decoration: none; 
+} */
 
 .menuDrop-open {
     border-radius: 0 0 5px 5px;
@@ -253,6 +270,19 @@ body, main {
     align-items: center;
     width: 100%
 }
+
+/* réinitialisation d'un bouton contenant les icones "coeur", pour le rendre transparent */
+.btnHeart {
+    margin: 0;
+    padding: 0;
+    line-height: 100%; /* Si ça fonctionne pas mets 0 */
+    border: 0;
+    background: none; /* ou transparent je sais plus... */
+    font: "DM Sans", sans-serif; /* Définis le même font qu'un lien traditionnel */
+    color: transparent/* La même couleur... */;
+    text-decoration: underline; /* Normalement */
+}
+
 .block-photographies i {
     color: #901C1C;
     right: -0.5em;
@@ -331,12 +361,12 @@ body, main {
         top: 2.2em;
     }
 
-    .menuDrop li {
+    .menuDrop a {
         padding: 1em 0.5em 1em 0.5em;
         margin: 0;
     }
 
-    .menuDrop li:hover {
+    .menuDrop a:hover {
         padding: 1em 0.2em 1em 0.2em;
         margin: 0;
     }

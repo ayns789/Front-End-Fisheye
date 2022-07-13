@@ -1,6 +1,4 @@
 
-
-
 function loadLightbox(){
     
     let selectedPhotographies = JSON.parse(localStorage.getItem("selectedWorksPhotograph"));
@@ -13,6 +11,7 @@ function loadLightbox(){
     const lightboxBtnNext = document.querySelector('.lightbox__next');
     const lightboxBtnPrev = document.querySelector('.lightbox__prev');
     const links = document.querySelectorAll("article a");
+    // const mainhidden = document.querySelector("main");
 
     const regexVideo = "mp4";
     let currentMedia;
@@ -20,6 +19,7 @@ function loadLightbox(){
     
 
     function load(){
+
         // si les boutons next / prev ne sont cliqués, on continue
         if(btnClicked == false){
             // on ajout un écouteur d'événement à chaque média cliqué
@@ -60,6 +60,11 @@ function loadLightbox(){
     
     document.addEventListener("mouseup", (event) => {
         if(event.target.classList.contains('media')){
+            loadLightbox();
+        }
+    })
+    document.addEventListener("keydown", (event) => {
+        if(event.code == "Enter"){
             loadLightbox();
         }
     })
