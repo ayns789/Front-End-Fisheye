@@ -3,9 +3,12 @@
 
 const body = document.querySelectorAll('body *');
 const modal = document.getElementById("contact_modal");
+const mainHidden = document.querySelector("main");
 
 function displayModal() {
 	modal.style.display = "block";
+  modal.ariaHidden = "false";
+  mainHidden.ariaHidden = "true";
 	modal.style.backgroundColor = "rgba(255, 255, 255, 1)";
 	// body.style.color = "rgba(255, 255, 255, 1)";
   let dataPhotographer = JSON.parse(localStorage.getItem("photographerInfo"));
@@ -15,6 +18,8 @@ function displayModal() {
 
 function closeModal() {
     modal.style.display = "none";
+    modal.ariaHidden = "true";
+    mainHidden.ariaHidden = "false";
 }
 
 {/* <li value="popularity"><a href="#">Popularité</a></li>
@@ -29,6 +34,7 @@ const email = document.getElementById("email");
 const errorEmail = document.getElementById("emailError");
 const message = document.getElementById("message");
 const errorMessage = document.getElementById("messageError");
+
 
 const regexLetters = /^[ a-zA-ZàèìòùÀÈÌÒÙáéíóúýÁÉÍÓÚÝâêîôûÂÊÎÔÛãñõÃÑÕäëïöüÿÄËÏÖÜŸçÇßØøÅåÆæœ'`'\-]+$/;
 const regexMail = /^[a-z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,}$/;
@@ -232,6 +238,123 @@ function pushConsoleLog(){
 
 pushConsoleLog();
 
+// let inputs, index;
+
+// inputs = document.getElementsByTagName('input');
+// for (index = 0; index < inputs.length; ++index) {
+//     // deal with inputs[index] element.
+// }
+
+// function changeInputsByKeyboard(val){
+
+//   let inputs, indx;
+
+//   // trouver les éléments enfants "inputs" de la balise form
+//   inputs = form.getElementsByTagName('input');
+  
+//   if(val == "more"){
+//     for (indx = 0; indx < inputs.length; ++indx) {
+//       indx++;
+//   }
+//   }
+
+//   if(val == "less"){
+//     for (indx = 0; indx < inputs.length; --indx) {
+//       indx--;
+//       if(indx == 0) return indx = 0;
+//   }
+//   }
+// }
+
+
+// document.addEventListener("keydown", (event) => {
+//   // console.log(event.code);
+//   if(modal.ariaHidden = "false"){
+//     switch (event.code) {
+//       case 'ArrowDown':
+//           changeInputsByKeyboard("more");
+//           break;
+//       case 'ArrowUp':
+//         changeInputsByKeyboard("less");
+//           break;
+//       case 'Escape':
+//           modal.style.display = 'none';
+//           mainHidden.ariaHidden = "false";
+//           modal.ariaHidden = "true";
+//           break;
+//       case 'Enter':
+//           modal.style.display = 'none';
+//           mainHidden.ariaHidden = "false";
+//           modal.ariaHidden = "true";
+//           break;
+//       }
+//   }
+// }) 
+
+///////////////////////////////////////////
+////////////////////////////////////////////
+
+// let ins = document.querySelectorAll('input[type=""]');
+
+// ins.forEach(function(input) {
+// 	/**
+// 	 * Control on keyup to catch what the user intent to do.
+// 	 * I could have check for numeric key only here, but I didn't.
+// 	 */
+// 	input.addEventListener('keyup', function(e){
+// 		// Break if Shift, Tab, CMD, Option, Control.
+// 		if (e.keyCode === 16 || e.keyCode == 9 || e.keyCode == 224 || e.keyCode == 18 || e.keyCode == 17) {
+// 			 return;
+// 		}
+		
+// 		// On Backspace or left arrow, go to the previous field.
+// 		if ( (e.keyCode === 8 || e.keyCode === 37) && this.previousElementSibling && this.previousElementSibling.tagName === "INPUT" ) {
+// 			this.previousElementSibling.select();
+// 		} else if (e.keyCode !== 8 && this.nextElementSibling) {
+// 			this.nextElementSibling.select();
+// 		}
+// 	});
+	
+// 	/**
+// 	 * Better control on Focus
+// 	 * - don't allow focus on other field if the first one is empty
+// 	 * - don't allow focus on field if the previous one if empty (debatable)
+// 	 * - get the focus on the first empty field
+// 	 */
+// 	input.addEventListener('focus', function(e) {
+// 		// If the focus element is the first one, do nothing
+// 		if ( this === form ) return;
+		
+// 		// If value of input 1 is empty, focus it.
+// 		if ( form.value == '' ) {
+// 			form.focus();
+// 		}
+		
+// 		// If value of a previous input is empty, focus it.
+// 		// To remove if you don't wanna force user respecting the fields order.
+// 		if ( this.previousElementSibling.value == '' ) {
+// 			this.previousElementSibling.focus();
+// 		}
+// 	});
+// });
+
+// /**
+//  * Handle copy/paste of a big number.
+//  * It catches the value pasted on the first field and spread it into the inputs.
+//  */
+// form.addEventListener('input', function(e) {
+// 	let data = e.data || this.value; // Chrome doesn't get the e.data, it's always empty, fallback to value then.
+// 	if ( ! data ) return; // Shouldn't happen, just in case.
+// 	if ( data.length === 1 ) return; // Here is a normal behavior, not a paste action.
+	
+// 	for (i = 0; i < data.length; i++ ) {
+// 		ins[i].value = data[i];
+// 	}
+// });
+  
+  
+
+
 //////////////////////////////////////////
 
 const form = document.getElementById("form");
@@ -241,7 +364,9 @@ buttonSubmit.addEventListener('click', formValidation);
   // send form if conditions are ok
   form.addEventListener("submit", (e) => {
     
-    modalbg.style.display = "none";
+    modal.style.display = "none";
+    modal.ariaHidden = "true";
+    mainHidden.ariaHidden = "false";
     // sessionStorage.clear();
   e.preventDefault();
 })

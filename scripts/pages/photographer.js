@@ -3,6 +3,7 @@ import {photographerPageFactory} from "../factories/photographerPageFactory.js";
 
 // Récupère les datas du photographe enregistré dans le localStorage
 let dataPhotographer = JSON.parse(localStorage.getItem("photographerInfo"));
+const mainHidden = document.querySelector("main");
 let photographers = [];
 
 async function getPhotographerWorks(dataPhotographer) {
@@ -115,6 +116,8 @@ function btnDropdownFilter(selectedWorksPhotograph){
             select.ariaExpanded = "false";
         }
 
+        if(mainHidden.ariaHidden == "false") { 
+
         // ajout d'un event au click sur le bouton du dropdown
         select.addEventListener('click', () => {
             // ajout d'une classe de style pour des effets sur le bouton dropdown
@@ -127,11 +130,11 @@ function btnDropdownFilter(selectedWorksPhotograph){
             select.ariaExpanded = "true";
         })
 
-        select.addEventListener('focus', () => {
+        select.addEventListener('focusin', () => {
             select.style.background = "#DB8876";
             select.addEventListener('focusout', () => {
                 select.style.background = "#901C1C";
-            })
+            })  
         })
         
     
@@ -142,6 +145,7 @@ function btnDropdownFilter(selectedWorksPhotograph){
                     initializDropdown();
                 };  
         });
+
         
         // on écoute le menu, si le keyboard arrive dessus, on l'ouvre, si on en sort, on le referme
                 options.forEach(option =>{
@@ -160,27 +164,27 @@ function btnDropdownFilter(selectedWorksPhotograph){
                         })
                     })
 
-                    option.addEventListener('focus', (e) => {
+                    option.addEventListener('focusin', (e) => {
                         addMenuDrop(); 
                         option.style.background = "#DB8876";
                         option.style.width = "11em";
-                    })
+                    })          
                     
                 })
+            }
                 
-        
 
         function filtersGesture(){
         // création d'un tableau vide à objectif de prendre la valeur du filtre sélectionné
         let resultFilters = [];
-    
+        if(mainHidden.ariaHidden == "false") {
         // boucle sur tous les éléments de la liste
         options.forEach(option =>{
             // ajout d'un event au click sur une option du menu sélectionnée
             option.addEventListener('click', () => {
                 // affecter la valeur texte de l'option cliquée à la valeur du texte du bouton dropdown
                 selected.innerText = option.innerText;
-                
+                option.style.background = "#901C1C";
                 // filtre en fonction de l'élément sélectionné du menu + réécriture des éléments du menu
                 if (selected.innerText == 'Popularité') {
                     resultFilters = selectedWorksPhotograph.sort((a, b) => (a.likes > b.likes ? 1 : -1));
@@ -205,16 +209,52 @@ function btnDropdownFilter(selectedWorksPhotograph){
                 // envoi de la liste filtrée en fonction de la sélection faite, à la fonction qui 
                 updateData(resultFilters);
                 
-                // // supprimer la classe active sur les éléments de la liste du menu
-                // options.forEach(option => {
-                //     option.classList.remove('.activeDrop');
-                // })
-                
-                // // ajout de la classe active sur l'élément clické
-                // option.classList.add('activeDrop');
-                
+                })
             })
-        })
+            
+        }
+        // // boucle sur tous les éléments de la liste
+        // options.forEach(option =>{
+        //     // ajout d'un event au click sur une option du menu sélectionnée
+        //     option.addEventListener('click', () => {
+        //         // affecter la valeur texte de l'option cliquée à la valeur du texte du bouton dropdown
+        //         selected.innerText = option.innerText;
+        //         option.style.background = "#901C1C";
+        //         // filtre en fonction de l'élément sélectionné du menu + réécriture des éléments du menu
+        //         if (selected.innerText == 'Popularité') {
+        //             resultFilters = selectedWorksPhotograph.sort((a, b) => (a.likes > b.likes ? 1 : -1));
+        //             options[0].innerText = 'Date';
+        //             options[1].innerText = 'Titre';
+        //             // select.ariaExpanded = "false";
+        //         } else if (selected.innerText == 'Date') {
+        //             resultFilters = selectedWorksPhotograph.sort((a, b) => (a.date > b.date ? 1 : -1));
+        //             options[0].innerText = 'Popularité';
+        //             options[1].innerText = 'Titre';
+        //             // select.ariaExpanded = "false";
+        //         } else if (selected.innerText == 'Titre') {
+        //             resultFilters = selectedWorksPhotograph.sort((a, b) => (a.title > b.title ? 1 : -1));
+        //             options[0].innerText = 'Popularité';
+        //             options[1].innerText = 'Date';
+        //             // select.ariaExpanded = "false";
+        //         }
+
+        //         // on inscrit la liste filtrée dans le storage pour la lightbox
+        //         localStorage.setItem('selectedWorksPhotograph', JSON.stringify(resultFilters));
+    
+        //         // envoi de la liste filtrée en fonction de la sélection faite, à la fonction qui 
+        //         updateData(resultFilters);
+                
+        //         // // supprimer la classe active sur les éléments de la liste du menu
+        //         // options.forEach(option => {
+        //         //     option.classList.remove('.activeDrop');
+        //         // })
+                
+        //         // // ajout de la classe active sur l'élément clické
+        //         // option.classList.add('activeDrop');
+                
+        //     })
+        // })
+
     }
 
     filtersGesture();
@@ -236,20 +276,21 @@ init();
 
 // avec la navigation clavier, on change couleur du bouton contactez moi qui appelle la modale
 const contactBtn = document.querySelector(".contact_button");
-
+if(mainHidden.ariaHidden == "false") {
 contactBtn.addEventListener('focus', () => {
     contactBtn.style.background = "#DB8876";
     contactBtn.addEventListener('focusout', () => {
         contactBtn.style.background = "#901C1C";
     })
 })
+}
 
 
 // selectedWorksPhotograph.media.onkeydown = loadLightbox();
 
 /////////////////// RESIZE HEADER ////////////////////
 
-
+if(mainHidden.ariaHidden == "false") {
 window.addEventListener("load", addClassToHeader);
 // window.addEventListener("resize", addClassToHeader);
 window.onresize = addClassToHeader;
@@ -290,5 +331,6 @@ function addClassToHeader (){
         
     }
 }   
+}
 
 ////////////////////////////////////////

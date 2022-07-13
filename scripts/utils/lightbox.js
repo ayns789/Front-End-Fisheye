@@ -11,7 +11,7 @@ function loadLightbox(){
     const lightboxBtnNext = document.querySelector('.lightbox__next');
     const lightboxBtnPrev = document.querySelector('.lightbox__prev');
     const links = document.querySelectorAll("article a");
-    // const mainhidden = document.querySelector("main");
+    const mainHidden = document.querySelector("main");
 
     const regexVideo = "mp4";
     let currentMedia;
@@ -29,6 +29,8 @@ function loadLightbox(){
                     currentMedia = "";
                     // on affiche la lightbox
                     lightbox.style.display = 'block';
+                    mainHidden.ariaHidden = "true";
+                    lightbox.ariaHidden = "false";
                     // on récupère la partie du chemin du fichier, dans le chemin href 
                     let pathFileMedia = this.href.substring(43, 100);
                     
@@ -66,6 +68,8 @@ function loadLightbox(){
     document.addEventListener("keydown", (event) => {
         if(event.code == "Enter"){
             loadLightbox();
+            mainHidden.ariaHidden = "true";
+            lightbox.ariaHidden = "false";
         }
     })
 
@@ -141,37 +145,30 @@ function loadLightbox(){
     // fermeture lightbox au clic sur la croix
     lightboxBtnClose.addEventListener('click', () => {
         lightbox.style.display = 'none';
+        mainHidden.ariaHidden = "false";
+        lightbox.ariaHidden = "true";
     });
 
     // navigation au clavier, fleches gauche et droite, touche échap pour sortir
     document.onkeydown = function (event) {
         // console.log(event.code);
-        switch (event.code) {
-        case 'ArrowLeft':
-            displayBtnPrev();
-            //   console.log("Left key is pressed.");
-            break;
-        case 'ArrowRight':
-            displayBtnNext();
-            //   console.log("Right key is pressed.");
-            break;
-        case 'Escape':
-            lightbox.style.display = 'none';
-            break;
+        if(lightbox.ariaHidden == "false"){
+            switch (event.code) {
+                case 'ArrowLeft':
+                    displayBtnPrev();
+                    //   console.log("Left key is pressed.");
+                    break;
+                case 'ArrowRight':
+                    displayBtnNext();
+                    //   console.log("Right key is pressed.");
+                    break;
+                case 'Escape':
+                    lightbox.style.display = 'none';
+                    mainHidden.ariaHidden = "false";
+                    lightbox.ariaHidden = "true";
+                    break;
+                }
         }
-        // switch (event.keyCode) {
-        // case 37:
-        //     displayBtnPrev();
-        //     //   console.log("Left key is pressed.");
-        //     break;
-        // case 39:
-        //     displayBtnNext();
-        //     //   console.log("Right key is pressed.");
-        //     break;
-        // case 27:
-        //     lightbox.style.display = 'none';
-        //     break;
-        // }
     };
 
     

@@ -17,7 +17,7 @@
       /></a>
     </header>
     <!-- aria-hidden="false" -->
-    <main id="main" role="main">
+    <main id="main" role="main" aria-hidden="false">
       <div class="photograph-header">
         <div class="center-block">
           <div class="leftB"></div>
@@ -50,8 +50,8 @@
               aria-haspopup="true"
               aria-labelledby="idSelectBtnDrop"
             >
-              <a role="menu-item" href="#" class="activeDrop designList">Date</a>
-              <a role="menu-item" href="#" class="designList">Titre</a>
+              <a role="menuitem" href="#" class="activeDrop designList">Date</a>
+              <a role="menuitem" href="#" class="designList">Titre</a>
             </div>
           </div>
         </div>
@@ -59,8 +59,9 @@
 
       <div class="photographies-section" role="region"></div>
     </main>
-    <div id="contact_modal" role="group" aria-labelledby="joinForm">
-      <div class="modal">
+
+    <div id="contact_modal" role="dialog" aria-hidden="true">
+      <div class="modal" role="group" aria-labelledby="form">
         <header class="modalH" role="banner">
           <div class="titleNameAlign" id="joinForm">
             <h2 class="titleH">Contactez moi</h2>
@@ -132,19 +133,15 @@
       </div>
     </div>
 
-    <div class="lightbox" role="dialog">
+    <div class="lightbox" role="dialog" aria-hidden="true">
       <span
         class="fas fa-chevron-left lightbox__prev"
         role="link"
-        aria-label="image précédente"
+        aria-label="Previous image"
       ></span>
       <div class="lightbox__container"></div>
-      <span class="fas fa-times close_bigger lightbox__close"></span>
-      <span
-        class="fas fa-chevron-right lightbox__next"
-        role="link"
-        aria-label="image suivante"
-      ></span>
+      <span class="fas fa-times close_bigger lightbox__close" aria-label="Close dialog"></span>
+      <span class="fas fa-chevron-right lightbox__next" role="link" aria-label="Next image"></span>
     </div>
 
     <script src="/scripts/utils/contactForm.js"></script>
