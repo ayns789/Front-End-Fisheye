@@ -32,7 +32,7 @@ function loadLightbox(){
                     mainHidden.ariaHidden = "true";
                     lightbox.ariaHidden = "false";
                     // on récupère la partie du chemin du fichier, dans le chemin href 
-                    let pathFileMedia = this.href.substring(43, 100);
+                    let pathFileMedia =  this.href.substring(43, 100);
                     
                     // dissocier photos et vidéos pour les traiter selon le cas
                     if(this.href.includes(regexVideo)){
@@ -89,7 +89,7 @@ function loadLightbox(){
         if (mediaSelected.image) {
             return (
                 '<img class="media" src="' +
-                `assets/photographies/${mediaSelected.image}` +
+                `./assets/photographies/${mediaSelected.image}` +
                 '" alt="' +
                 mediaSelected.title +
                 '"img>' +
@@ -101,7 +101,7 @@ function loadLightbox(){
             return (
                 '<video autoplay loop controls="controls" class="media">' +
                 '<source src="' +
-                `assets/photographies/${mediaSelected.video}` +
+                `./assets/photographies/${mediaSelected.video}` +
                 '" alt="' +
                 mediaSelected.title +
                 '" type=video/mp4>' +

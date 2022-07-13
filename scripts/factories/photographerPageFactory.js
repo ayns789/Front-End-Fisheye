@@ -7,7 +7,7 @@ export function photographerPageFactory( ) {
     // instanciation du design pattern constructor pour créer un objet représentant le photographe
     let objPhotographer = new PhotographerModel(dataPhotographer);
     // récupération du chemin de la photo de profil du photographe
-    const picture = `assets/photographers/${objPhotographer.portrait}`;
+    const picture = `./assets/photographers/${objPhotographer.portrait}`;
 
     // fonction pour créer la partie du header qui contient le nom, la localisation et le slogan du photographe
     function getUserHeader() {
@@ -135,8 +135,8 @@ export function photographerPageFactory( ) {
       // }
       
       // récupération des chemins des médias
-      const picture = `assets/photographies/${objPhotographie.image}`;
-      const movie = `assets/photographies/${objPhotographieVideo.video}`;
+      const picture = `./assets/photographies/${objPhotographie.image}`;
+      const movie = `./assets/photographies/${objPhotographieVideo.video}`;
           
           //création d'éléments html
           const article = document.createElement( 'article' );
