@@ -1,7 +1,7 @@
 // import {photographerPageFactory} from "../factories/photographerPageFactory.js";
 
 
-const body = document.querySelectorAll('body *');
+// const mainDisabled = document.querySelector('main');
 const modal = document.getElementById("contact_modal");
 const mainHidden = document.querySelector("main");
 
@@ -9,6 +9,7 @@ function displayModal() {
 	modal.style.display = "block";
   modal.ariaHidden = "false";
   mainHidden.ariaHidden = "true";
+  // mainDisabled.classList.add('"disable-div"');
 	modal.style.backgroundColor = "rgba(255, 255, 255, 1)";
 	// body.style.color = "rgba(255, 255, 255, 1)";
   let dataPhotographer = JSON.parse(localStorage.getItem("photographerInfo"));

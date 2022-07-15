@@ -130,12 +130,13 @@ function btnDropdownFilter(selectedWorksPhotograph){
             select.ariaExpanded = "true";
         })
 
-        select.addEventListener('focusin', () => {
-            select.style.background = "#DB8876";
-            select.addEventListener('focusout', () => {
-                select.style.background = "#901C1C";
-            })  
-        })
+        // select.addEventListener('focusin', () => {
+        //     select.style.background = "#DB8876";
+            
+        // })
+        // select.addEventListener('focusout', () => {
+        //     select.style.background = "#901C1C";
+        // })  
         
     
         // si le menu dropdown est ouvert et qu'on clique ailleurs, il se ferme et le caret du bouton reprend sa position 
@@ -154,6 +155,7 @@ function btnDropdownFilter(selectedWorksPhotograph){
                         addMenuDrop();
                         if (e.code == "Enter") {
                             initializDropdown();
+                            option.style.background = "#901C1C";
                         }
                         option.addEventListener('focusout', () => {
                             initializDropdown();
@@ -161,13 +163,15 @@ function btnDropdownFilter(selectedWorksPhotograph){
                         })
                         option.addEventListener('focusin', () => {
                             addMenuDrop();
+                            option.style.background = "#DB8876";
                         })
                     })
 
                     option.addEventListener('focusin', (e) => {
                         addMenuDrop(); 
                         option.style.background = "#DB8876";
-                        option.style.width = "11em";
+                        option.style.width = "10.2em";
+                        // option.style.marginRight = "-1em";
                     })          
                     
                 })

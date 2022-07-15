@@ -166,7 +166,7 @@ export function photographerPageFactory( ) {
               el.setAttribute(key, attrs[key]);
             }
           }
-          contentBtnHeart.className = "btnHeart";
+          contentBtnHeart.className = "btnDisabled";
           
           
 

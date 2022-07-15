@@ -129,15 +129,19 @@ body, main {
     margin-top: 1em;
 }
 
-.selectBtnDrop-clicked {
+/* .selectBtnDrop-clicked {
     box-shadow: 0 0 0 0 black;
-}
+} */
 .selectBtnDrop:hover {
     background: #DB8876;
 }
 /* .selectBtnDrop:focus {
     background: #901C1C;
 } */
+
+.disable-div {
+    pointer-events: none;
+}
 
 .caretDrop {
     width: 12px;
@@ -190,7 +194,7 @@ margin-left: -0.5em;
     background: #DB8876;
     width: 96%;
     height: 100%;
-    padding: 1.5em 0em 1.5em 0.5em;
+    padding: 1.5em 0.9em 0em 0.5em;
     cursor: pointer;
 }
 
@@ -210,6 +214,7 @@ margin-left: -0.5em;
     transform: translate(-50%, -50%);
     z-index: 1;
 }
+ 
 
 /* /////////////////////////// SECTION PHOTOGRAPHIES ///////////////////////////////////// */
 
@@ -272,7 +277,7 @@ margin-left: -0.5em;
 }
 
 /* réinitialisation d'un bouton contenant les icones "coeur", pour le rendre transparent */
-.btnHeart {
+.btnDisabled {
     margin: 0;
     padding: 0;
     line-height: 100%; /* Si ça fonctionne pas mets 0 */

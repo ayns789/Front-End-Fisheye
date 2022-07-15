@@ -62,17 +62,18 @@
 
     <div id="contact_modal" role="dialog" aria-hidden="true">
       <div class="modal">
-        <header class="modalH" role="banner">
+        <header class="modalH">
           <div class="titleNameAlign" id="joinForm">
             <h2 class="titleH">Contactez moi</h2>
             <h2 id="titlePhotograph"></h2>
           </div>
-          <img
-            src="./assets/icons/close.svg"
-            aria-label="Close Contact form"
-            onclick="closeModal()"
-            alt="Close Contact form"
-          />
+          <buton class="btnDisabled" onclick="closeModal()"
+            ><img
+              src="./assets/icons/close.svg"
+              aria-label="Close Contact form"
+              onclick="closeModal()"
+              alt="Close Contact form"
+          /></buton>
         </header>
         <form action="photographer.html" method="get" id="form" aria-label="Contact me" novalidate>
           <!-- <div> -->
